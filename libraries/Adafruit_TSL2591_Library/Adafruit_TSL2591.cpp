@@ -46,7 +46,6 @@
 /**************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
-#include <linux/i2c-dev.h>
 #include <sys/ioctl.h>
 #include <fcntl.h>
 #include <linux/i2c.h>
@@ -55,7 +54,7 @@
 #include <unistd.h>
 
 #include "Adafruit_TSL2591.h"
-#include "Wire.h"
+#include "../Wire/Wire.h"
 
 Adafruit_TSL2591::Adafruit_TSL2591(int32_t sensorID)
 {

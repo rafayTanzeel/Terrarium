@@ -4,7 +4,7 @@ CFLAGS=-lm -pthread -g
 
 all: TSL2591
 
-TSL2591: TSLTest.cpp Adafruit_TSL2591.cpp Wire.cpp
-	$(CC) TSLTest.cpp Adafruit_TSL2591.cpp Wire.cpp -o TSL2591 $(CFLAGS)
+TSL2591: TSLTest.cpp Adafruit_TSL2591.cpp ../Wire/Wire.cpp
+	$(CC) TSLTest.cpp Adafruit_TSL2591.cpp ../Wire/Wire.cpp -o TSL2591 $(CFLAGS)
 	cp -f $@ /home/glengallagher/cmpt433/public/myApps/$@
 
