@@ -15,7 +15,6 @@
  ****************************************************/
 
 
-#include "Wire.h"
 #include <stdint.h>
 
 #define SHT31_DEFAULT_ADDR    0x44
