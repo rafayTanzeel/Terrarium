@@ -289,19 +289,19 @@ uint16_t Adafruit_TSL2591::getLuminosity (uint8_t channel)
 
   if (channel == TSL2591_FULLSPECTRUM)
   {
-  	printf("Full spectrum\n");
+  	//printf("Full spectrum\n");
     // Reads two byte value from channel 0 (visible + infrared)
     return (x & 0xFFFF);
   }
   else if (channel == TSL2591_INFRARED)
   {
-  	printf("Infrared\n");
+  //	printf("Infrared\n");
     // Reads two byte value from channel 1 (infrared)
     return (x >> 16);
   }
   else if (channel == TSL2591_VISIBLE)
   {
-  	printf("Visible\n");
+  	//printf("Visible\n");
     // Reads all and subtracts out just the visible!
     return ( (x & 0xFFFF) - (x >> 16));
   }
@@ -389,17 +389,19 @@ uint8_t Adafruit_TSL2591::read8(uint8_t reg)
 
 uint16_t Adafruit_TSL2591::read16(uint8_t reg)
 {
-	return Wire.read16(_file, reg);
+	uint16_t read;
+	Wire.readBytes(_file, 2, reg, (uint8_t*)&read);
+	return read;
 }
 
 void Adafruit_TSL2591::write8 (uint8_t reg, uint8_t value)
 {
-	printf(" write8 returned: %i\n", Wire.write8(_file, reg, value));
+	Wire.write8(_file, reg, value);
 }
 
 
 void Adafruit_TSL2591::write8 (uint8_t reg)
 {
-	printf(" write8 returned: %i\n", Wire.write8(_file, reg));
+	Wire.write8(_file, reg);
 }
 

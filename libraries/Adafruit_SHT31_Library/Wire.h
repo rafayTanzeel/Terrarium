@@ -11,16 +11,10 @@ class TwoWire
 	int writeI2C(int file, int len, unsigned char * buff);
 	
 	uint8_t read8(int file, uint8_t addr);
-	
 	int write8(int file, uint8_t addr, uint8_t send);
-	int write8(int file, uint8_t addr);
 	
-	int readBytes(int file, int num, uint8_t addr, uint8_t* bytes);
 	int readBytes(int file, int num, uint8_t* bytes);
-
-
 	
-
  private:
 
 };

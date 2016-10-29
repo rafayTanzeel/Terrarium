@@ -43,7 +43,7 @@ float powf(const float x, const float y)
 /**************************************************************************/
 void Adafruit_TCS34725::write8 (uint8_t reg, uint32_t value)
 {
-	Wire.write8(_file, reg, value);
+	Wire.write8(_file, TCS34725_COMMAND_BIT | reg, value & 0xFF);
 }
 
 /**************************************************************************/
@@ -53,7 +53,7 @@ void Adafruit_TCS34725::write8 (uint8_t reg, uint32_t value)
 /**************************************************************************/
 uint8_t Adafruit_TCS34725::read8(uint8_t reg)
 {
-	return Wire.read8(_file, reg);
+	return Wire.read8(_file, TCS34725_COMMAND_BIT | reg);
 }
 
 /**************************************************************************/
@@ -63,7 +63,14 @@ uint8_t Adafruit_TCS34725::read8(uint8_t reg)
 /**************************************************************************/
 uint16_t Adafruit_TCS34725::read16(uint8_t reg)
 {
-	return Wire.read16(_file, reg);
+	uint8_t x; uint8_t t;
+	Wire.write8(_file, TCS34725_COMMAND_BIT | reg);
+	usleep(1000);
+	Wire.readBytes(_file, 1, &t);
+	Wire.readBytes(_file, 1, &x);
+	
+	uint16_t ret = ((uint16_t)x << 8) | t;
+	return ret;
 }
 
 /**************************************************************************/
@@ -275,9 +282,7 @@ void Adafruit_TCS34725::setInterrupt(bool i) {
 }
 
 void Adafruit_TCS34725::clearInterrupt(void) {
- 
- // TODO: not implemented yet
- // Wire.write8(TCS34725_COMMAND_BIT | 0x66);
+  Wire.write8(_file, TCS34725_COMMAND_BIT | 0x66);
 }
 
 

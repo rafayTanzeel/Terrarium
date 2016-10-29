@@ -44,14 +44,6 @@ int TwoWire::writeI2C(int file, int len, unsigned char * buff){
 	return 1;
 }
 
-uint8_t TwoWire::read8(int file, uint8_t addr){
-	writeI2C(file, 1, &addr);
-	usleep(100);
-	uint8_t recv;
-	readI2C(file, 1, &recv);
-	return recv;
-}
-
 
 int TwoWire::write8(int file, uint8_t addr, uint8_t send){
 	int e = 0;
@@ -63,18 +55,14 @@ int TwoWire::write8(int file, uint8_t addr, uint8_t send){
 	return e;
 }
 
-int TwoWire::write8(int file, uint8_t addr){
-	int e = 0;
-	e += writeI2C(file, 1, &addr);
-	return e;
-}
-
-
-int TwoWire::readBytes(int file, int num, uint8_t addr, uint8_t* bytes){
+uint8_t TwoWire::read8(int file, uint8_t addr){
 	writeI2C(file, 1, &addr);
 	usleep(100);
-	return readI2C(file, num, bytes);
+	uint8_t recv;
+	readI2C(file, 1, &recv);
+	return recv;
 }
+
 
 int TwoWire::readBytes(int file, int num, uint8_t* bytes){
 	return readI2C(file, num, bytes);
