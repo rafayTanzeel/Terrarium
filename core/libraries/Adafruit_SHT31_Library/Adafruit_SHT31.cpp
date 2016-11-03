@@ -85,7 +85,7 @@ float Adafruit_SHT31::readHumidity(void) {
 bool Adafruit_SHT31::readTempHum(void) {
   uint8_t readbuffer[6] = {0};
 
-  writeCommand(SHT31_MEAS_HIGHREP_STRETCH);
+  writeCommand(SHT31_MEAS_HIGHREP);
   usleep(1000000);
   Wire.readBytes(_file, 6, readbuffer);
   
