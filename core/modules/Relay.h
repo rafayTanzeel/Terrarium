@@ -6,16 +6,15 @@ class Relay
 {
 
 public:
-	
-	Relay(int pinNumber);
+	Relay(int pinNumber, bool initiallyOn = false);
 	
 	bool GetState();
 	bool setState(bool on);
 
 	
 private:
+	int _pinNumber;
 
-	bool _on;
 };
 
 
