@@ -1,5 +1,6 @@
 // Relay.cpp
 #include "Relay.h"
+#include "../tools/GPIO.h"
 
 
 Relay::Relay(int pinNumber, bool initiallyOn = false)
