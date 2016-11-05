@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include "GPIO.h"
 
 
 int exportGPIO(int pinNumber)
@@ -119,12 +120,6 @@ int getValue(int pinNumber)
 	fclose(file);
 	
 	return atoi(buff);
-}
-
-
-int exportPWM(int pinNumber)
-{
-//
 }
 
 

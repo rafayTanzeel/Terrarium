@@ -2,7 +2,6 @@
 #define GPIO_H
 
 
-
 int exportGPIO(int pinNumber);
 
 int setDirectionIn(int pinNumber);
