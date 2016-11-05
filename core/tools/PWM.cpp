@@ -1,40 +1,40 @@
 #include <stdio.h>
-#include <time.h>
-#include <math.h>
+//#include <time.h>
+//#include <math.h>
 #include <stdbool.h>
 #include <assert.h>
 #include <stdlib.h>
-#include <pthread.h>
+//#include <pthread.h>
 #include <map>
-#include <string>
-#include "PWM.cpp"
+#include <cstring>
+#include "PWM.h"
 
 static const char* SLOTS_DIR = "/sys/devices/platform/bone_capemgr/slots";
 
-static const char* PINMUX_DIR = "/sys/devices/platform/ocp/ocp\\:"
+static const char* PINMUX_DIR = "/sys/devices/platform/ocp/ocp:";
 static const char* PWM_DIR = "/sys/class/pwm";
 
 struct PinInfo
 {
 	int pinNumber;
-	char headerNumber[4];
+	char headerNumber[6];
 	int pwmChipNumber;
 	int exportNumber;
-}
+};
 
-static const map<int, PinInfo> pinInfoLookup = {{50,  {50,  "9_14", 4, 0}},
-		   										{51,  {51,  "9_16", 4, 0}},
-		   										{3,   {3,   "9_21", 4, 0}},
-		   										{2,   {2,   "9_22", 4, 0}},
-		   										{123, {123, "9_28", 4, 0}},
-		   										{121, {121, "9_29", 4, 0}},
-		   										{120, {120, "9_31", 4, 0}},
-		   										{23,  {23,  "8_13", 4, 0}},
-		   										{22,  {22,  "8_19", 4, 0}},
-		   										{81,  {81,  "8_34", 4, 0}},
-		   										{80,  {80,  "8_36", 4, 0}},
-		   										{70,  {70,  "8_45", 4, 0}},
-		   										{71,  {71,  "8_46", 4, 0}}}
+static const std::map<int, PinInfo> pinInfoLookup = {{50,  PinInfo{50,  "P9_14", 4, 1}},
+			   									  	 {51,  PinInfo{51,  "P9_16", 6, 0}},
+			   										 {3,   PinInfo{3,   "P9_21", 0, 0}},
+			   										 {2,   PinInfo{2,   "P9_22", 2, 0}},
+			   										 {123, PinInfo{123, "P9_28", 0, 0}},
+			   										 {121, PinInfo{121, "P9_29", 0, 0}},
+			   										 {120, PinInfo{120, "P9_31", 0, 0}},
+			   										 {23,  PinInfo{23,  "P8_13", 0, 0}},
+			   										 {22,  PinInfo{22,  "P8_19", 4, 0}},
+			   										 {81,  PinInfo{81,  "P8_34", 0, 0}},
+			   										 {80,  PinInfo{80,  "P8_36", 0, 0}},
+			   										 {70,  PinInfo{70,  "P8_45", 0, 0}},
+			   										 {71,  PinInfo{71,  "P8_46", 0, 0}}};
 
 
 int loadCape(const char* capeName)
@@ -56,11 +56,11 @@ int loadCape(const char* capeName)
 }
 
 int configPinMux(int pinNumber) {
-	if (map::end == pinInfoLookup.find(pinNumber) {
+	if (pinInfoLookup.end() == pinInfoLookup.find(pinNumber)) {
 		printf("ERROR: Invalid pin number specified\n");
 		return -1;
 	}
-	const char* headerNumber = pinToHeaderLookup[pinNumber].headerNumber;
+	const char* headerNumber = pinInfoLookup.at(pinNumber).headerNumber;
 	
 	// Use fopen() to open the file for write access.
 	char fileName[50];
@@ -69,7 +69,7 @@ int configPinMux(int pinNumber) {
 	
 	FILE *pfile = fopen(fileName, "w");
 	if (pfile == NULL) {
-	printf("ERROR: Unable to open pinmux file.\n");
+	printf("ERROR: Unable to open pinmux file.\n %s\n", fileName);
 	return -1;
 	}
 	// Write to data to the file using fprintf():
@@ -85,13 +85,13 @@ int configPinMux(int pinNumber) {
 
 int exportPWM(int pinNumber)
 {
-	if (map::end == pinInfoLookup.find(pinNumber) {
+	if (pinInfoLookup.end() == pinInfoLookup.find(pinNumber)) {
 		printf("ERROR: Invalid pin number specified\n");
 		return -1;
 	}
 	
-	int pwmChipNumber = pinInfoLookup[pinNumber].pwmChipNumber;
-	int exportNumber = pinInfoLookup[pinNumber].exportNumber;
+	int pwmChipNumber = pinInfoLookup.at(pinNumber).pwmChipNumber;
+	int exportNumber = pinInfoLookup.at(pinNumber).exportNumber;
 	
 	char fileName[50];
  	
@@ -105,17 +105,19 @@ int exportPWM(int pinNumber)
 		return -1;
 	}
 	// Write to data to the file using fprintf():	
-	if (strlen(itoa(exportNumber)) != fprintf(pfile, "%d", exportNumber)) {
+	char exportNumString[4];
+	sprintf(exportNumString, "%d", exportNumber);
+	if (strlen(exportNumString) != fprintf(pfile, "%s", exportNumString)) {
 		printf("ERROR: Unable to export pin.\n");
 		return -1;
-		
+	}
 	// Close the file using fclose():
 	fclose(pfile);
 	return 0;
 }
 
 
-int setDutyCycle(int pinNumber, int value);
+int setDutyCycle(int pinNumber, int value)
 {
  	char fileName[50];
  	
@@ -140,7 +142,7 @@ int setDutyCycle(int pinNumber, int value);
 
 }
 
-int setPeriod(int pinNumber, int value);
+int setPeriod(int pinNumber, int value)
 {
  	char fileName[50];
  	
@@ -165,16 +167,26 @@ int setPeriod(int pinNumber, int value);
 
 }
 
-int getDutyCycle(int pinNumber);
+int getDutyCycle(int pinNumber)
 {
 
 
 }
 
 
-int getPeriod(int pinNumber);
+int getPeriod(int pinNumber)
 {
 
 
 
 }
+
+
+int main()
+{
+	loadCape("cape-universaln");
+	configPinMux(50);
+	exportPWM(50);
+
+}
+
