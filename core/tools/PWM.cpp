@@ -110,7 +110,7 @@ int PWM::initPinFS()
     
     _pwmChip = getFullNameOfFileInDirectory(chipPath, "pwmchip");
     
-    std::string pinInterfacePath = std::string(PWM_DIR) + _pwmChip + "/";
+    std::string pinInterfacePath = std::string(PWM_DIR) + _pwmChip + "/" + pwmNumber + "/";
     
     _dutyCyclePath = pinInterfacePath + "duty_cycle";
     _periodPath = pinInterfacePath + "period";
@@ -149,6 +149,7 @@ std::string PWM::getFullNameOfFileInDirectory(const std::string & dirName, const
 int PWM::loadCape(const char* capeName)
 {
 	if (!_capeLoaded) {
+	printf("Loading Cape\n");
 	// Use fopen() to open the file for write access.
 	FILE *pfile = fopen(SLOTS_FILE, "w");
 	if (pfile == NULL) {
@@ -252,6 +253,8 @@ int PWM::setPeriod(int nanoseconds)
 {
 	int returnValue = 0;
 	
+	printf("%s\n", _periodPath.c_str());
+	
 	FILE *file = fopen(_periodPath.c_str(), "w");
 
 	if (NULL == file) {
@@ -289,5 +292,7 @@ int main()
 {
 	PWM pwm50(50);
 
+	pwm50.setPeriod(450000);
+	pwm50.setDutyCycle(250000);
 }
 
