@@ -23,6 +23,8 @@ public:
 
 	int getDutyCycle();
 	int getPeriod();
+	
+	int enable();
 		
 private:
 

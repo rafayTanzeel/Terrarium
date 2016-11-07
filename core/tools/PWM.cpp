@@ -273,6 +273,30 @@ int PWM::setPeriod(int nanoseconds)
 
 }
 
+int PWM::enable()
+{
+	int returnValue = 0;
+	
+	printf("%s\n", _enablePath.c_str());
+	
+	FILE *file = fopen(_enablePath.c_str(), "w");
+
+	if (NULL == file) {
+		printf("ERROR OPENING %s.", _enablePath.c_str());
+		returnValue = -1;
+	}
+	else {
+		int charWritten = fprintf(file, "1");
+		if (charWritten <= 0) { 
+			printf("ERROR WRITING DATA");
+			returnValue = -1;
+		}
+	}
+	fclose(file);
+	return returnValue;
+
+}
+
 int PWM::getDutyCycle()
 {
 
@@ -290,9 +314,10 @@ int PWM::getPeriod()
 
 int main()
 {
-	PWM pwm50(50);
+	PWM pwm50(51);
 
-	pwm50.setPeriod(450000);
-	pwm50.setDutyCycle(250000);
+	pwm50.setPeriod(10000000);
+	pwm50.setDutyCycle(5000000);
+	pwm50.enable();
 }
 
