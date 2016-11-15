@@ -231,6 +231,8 @@ int PWM::setDutyCycle(int nanoseconds)
 {
 	int returnValue = 0;
 	
+	printf("%s\n", _dutyCyclePath.c_str());
+	
 	FILE *file = fopen(_dutyCyclePath.c_str(), "w");
 
 	if (NULL == file) {
@@ -294,7 +296,29 @@ int PWM::enable()
 	}
 	fclose(file);
 	return returnValue;
+}
 
+int PWM::disable()
+{
+	int returnValue = 0;
+	
+	printf("%s\n", _enablePath.c_str());
+	
+	FILE *file = fopen(_enablePath.c_str(), "w");
+
+	if (NULL == file) {
+		printf("ERROR OPENING %s.", _enablePath.c_str());
+		returnValue = -1;
+	}
+	else {
+		int charWritten = fprintf(file, "0");
+		if (charWritten <= 0) { 
+			printf("ERROR WRITING DATA");
+			returnValue = -1;
+		}
+	}
+	fclose(file);
+	return returnValue;
 }
 
 int PWM::getDutyCycle()
@@ -315,7 +339,9 @@ int PWM::getPeriod()
 int main()
 {
 	PWM pwm50(51);
-
+	printf("Enabling PWM on GPIO50\n");
+	printf("PWM Pin directories:\n");
+	
 	pwm50.setPeriod(10000000);
 	pwm50.setDutyCycle(5000000);
 	pwm50.enable();

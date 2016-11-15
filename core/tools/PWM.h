@@ -25,6 +25,7 @@ public:
 	int getPeriod();
 	
 	int enable();
+	int disable();
 		
 private:
 
