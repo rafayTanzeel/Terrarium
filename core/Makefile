@@ -7,7 +7,7 @@ TARGET = terrarium
 LINKER = -lpthread -lm
 
 help:
-	echo "Targets are: all, app, wav, node"
+	echo "Targets are: all, app, clean"
 
 all: app
 
