@@ -12,4 +12,3 @@ int getValue(int pinNumber);
 
 
 #endif
-

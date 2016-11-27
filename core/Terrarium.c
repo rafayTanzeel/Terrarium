@@ -1,12 +1,19 @@
+#include "Terrarium.h"
 
+int main() {
+	// Run our program!
+	printf("Beginning of Terrarium program..\n");
 
+	// Setup thread attributes
+	pthread_attr_t attr;
+	pthread_t* tid = (pthread_t*)malloc(sizeof(*tid)*NUM_THREADS);
+	pthread_attr_init(&attr);
 
-int main()
+	// Create threads
+	pthread_create(&tid[0], &attr, /*FUNCTION_GOES_HERE*/, NULL); 	// ... Thread
 
-{
-// Run our program!
-
-
-
-
+	// Wait for threads to finish
+	for(int i = 0; i < NUM_THREAD; i++) {
+		pthread_join(tid[i], NULL);
+	}
 }
