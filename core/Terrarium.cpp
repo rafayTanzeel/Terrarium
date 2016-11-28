@@ -21,10 +21,3 @@ int main() {
 	printf("Stopping Terrarium program..\n");
 }
 
-float getHumidity() {
-	return ths.getHumidity();
-}
-
-float getTemperature() {
-	return ths.getTemperature();
-}

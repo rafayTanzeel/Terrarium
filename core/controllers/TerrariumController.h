@@ -100,6 +100,10 @@ public:
 	
 private:
 
+	HumidityController _humidityController;
+	LightController _lightController;
+	TemperatureController _temperatureController;
+
 };
 
 #endif

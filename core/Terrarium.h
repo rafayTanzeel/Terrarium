@@ -6,9 +6,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "Api.h"
+#include "controllers/TerrariumController.h"
 #include "TerrariumServer.h"
-#include "modules/TempHumiditySensor.h"
 
 #define SHT31_DEFAULT_ADDR 0x44
 #define I2CDRV_LINUX_BUS0 "/dev/i2c-0"
@@ -18,7 +17,6 @@
 #define NUM_THREADS 1
 
 _Bool stopping = false;
-TempHumiditySensor ths = TempHumiditySensor(I2CDRV_LINUX_BUS2, SHT31_DEFAULT_ADDR);
 
 #endif
 
