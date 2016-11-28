@@ -18,7 +18,10 @@ app: TerrariumServer.o
 	cp $(TARGET) $(PUBDIR)/$(TARGET)
 
 TerrariumServer.o: TerrariumServer.cpp
-	$(CC_C)$(CXX) $(CXXFLAGS) -c TerrariumServer.cpp
+	$(CC_C)$(CXX) $(CXXFLAGS) TerrariumServer.cpp -c TerrariumServer.cpp
+
+Api.o: Api.cpp
+	$(CC_C)$(CXX) $(CXXFLAGS) -c Api.cpp
 
 clean: 
 	rm -f *o $(PUBDIR)/$(TARGET)

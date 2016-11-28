@@ -1,13 +1,8 @@
 #include "Terrarium.h"
 
-void setup();
-
 int main() {
 	// Run our program!
 	printf("Beginning of Terrarium program..\n");
-
-	// Setup
-	setup();
 
 	// Setup thread attributes
 	pthread_attr_t attr;
@@ -26,5 +21,10 @@ int main() {
 	printf("Stopping Terrarium program..\n");
 }
 
-void setup() {
+float getHumidity() {
+	return ths.getHumidity();
+}
+
+float getTemperature() {
+	return ths.getTemperature();
 }
