@@ -82,7 +82,7 @@ uint16_t Adafruit_TCS34725::read16(uint8_t reg)
 void Adafruit_TCS34725::enable(void)
 {
   write8(TCS34725_ENABLE, TCS34725_ENABLE_PON);
-  usleep(30000);
+  usleep(3000);
   write8(TCS34725_ENABLE, TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN);  
 }
 
