@@ -7,14 +7,18 @@ LightSensor::LightSensor(const char * filename, uint8_t addr)
 	_tsl2591.begin();
 }
 
-uint16_t LightSensor::getLux() 
+uint32_t LightSensor::getLux() 
 {
-	return _tsl2591.getLuminosity(TSL2591_FULLSPECTRUM);
+	uint16_t luminosity_full = _tsl2591.getLuminosity(TSL2591_FULLSPECTRUM);
+	uint16_t luminosity_infared = _tsl2591.getLuminosity(TSL2591_INFRARED);
+	return _tsl2591.calculateLux(luminosity_full, luminosity_infared);
 }
 
 uint32_t LightSensor::getFootCandles()
 {
 	uint16_t luminosity_full = _tsl2591.getLuminosity(TSL2591_FULLSPECTRUM);
 	uint16_t luminosity_infared = _tsl2591.getLuminosity(TSL2591_INFRARED);
-	return _tsl2591.calculateLux(luminosity_full, luminosity_infared);
+	uint32_t lux = _tsl2591.calculateLux(luminosity_full, luminosity_infared);
+	
+	return lux * 0.09290304;
 }
