@@ -5,196 +5,199 @@ TerrariumController::TerrariumController() {}
 //Automatic Control (sets both day and night)
 int TerrariumController::setColorTemperature(int temp, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setColorTemperature(temp, useAnalogLEDs);
 }
 
 int TerrariumController::setBrightnessLux(int lux, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setBrightnessLux(lux, useAnalogLEDs);
 }
 
 int TerrariumController::setBrightnessFootcandles(int footcandles, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setBrightnessFootcandles(footcandles, useAnalogLEDs);
 }
 
 int TerrariumController::setHumidity(int humidity) 
 {
-	return 0;
+	return _climateController.setHumidity(humidity);
 }
 
 int TerrariumController::setTemperature(int temperature) //celsius
 { 
-	return 0;
+	return _climateController.setTemperature(temperature);
 }
 
 int TerrariumController::setWetnessAlarmThreshold(int threshold) 
 {
-	return 0;
+	return _climateController.setWetnessAlarmThreshold(threshold);
 }
 
 
 //Automatic w/ day/night cycle
 int TerrariumController::setDayTime(int hours, int minutes, int seconds) 
 {
-	return 0;
+	return (_lightController.setNightTime(hours, minutes, seconds) ||   // if this short-circuits we already did something wrong
+            _climateController.setNightTime(hours, minutes, seconds));
 }
 
 int TerrariumController::setNightTime(int hours, int minutes, int seconds) 
 {
-	return 0;
+    return (_lightController.setNightTime(hours, minutes, seconds) ||  // if this short-circuits we already did something wrong
+            _climateController.setNightTime(hours, minutes, seconds));
+	 
 }
 
 int TerrariumController::setDayColorTemperature(int temp, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setDayColorTemperature(temp, useAnalogLEDs);
 }
 
 int TerrariumController::setNightColorTemperature(int temp, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setNightColorTemperature(temp, useAnalogLEDs);
 }
 
 int TerrariumController::setDayBrightnessLux(int lux, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setDayBrightnessLux(lux, useAnalogLEDs);
 }
 
 int TerrariumController::setNightBrightnessLux(int lux, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setNightBrightnessLux(lux, useAnalogLEDs);
 }
 
 int TerrariumController::setDayBrightnessFootcandles(int footcandles, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setDayBrightnessFootcandles(footcandles, useAnalogLEDs);
 }
 
 int TerrariumController::setNightBrightnessFootcandles(int footcandles, bool useAnalogLEDs) 
 {
-	return 0;
+	return _lightController.setNightBrightnessFootcandles(footcandles, useAnalogLEDs);
 }
 
 int TerrariumController::setDayHumidity(int humidity) 
 {
-	return 0;
+	return _climateController.setDayHumidity(humidity);
 }
 
 int TerrariumController::setNightHumidity(int humidity) 
 {
-	return 0;
+	return _climateController.setNightHumidity(humidity);
 }
 
 int TerrariumController::setDayTemperature(int temperature) //celsius
 { 
-	return 0;
+	return _climateController.setDayTemperature(temperature);
 }
 
 int TerrariumController::setNightTemperature(int temperature) //celsius
 { 
-	return 0;
+	return _climateController.setNightTemperature(temperature);
 }
 
 
 //Manual Control
 int TerrariumController::setIntakeFanStatus(bool on) {
 
-	return 0;
+	return _climateController.setIntakeFanStatus(on);
 }
 
 int TerrariumController::setExhaustFanStatus(bool on) 
 {
-	return 0;
+	return _climateController.setExhaustFanStatus(on);
 }
 
 int TerrariumController::setCirculationFanStatus(bool on) 
 {
-	return 0;
+	return _climateController.setCirculationFanStatus(on);
 }
 
 int TerrariumController::setFoggerStatus(bool on) 
 {
-	return 0;
+	return _climateController.setFoggerStatus(on);
 }
 
 int TerrariumController::setCoolerStatus(bool on) 
 {
-	return 0;
+	return _climateController.setCoolerStatus(on);
 }
 
 int TerrariumController::setAnalogLEDBrightness(int brightness) 
 {
-	return 0;
+	return _lightController.setAnalogLEDBrightness(brightness);
 }
 
 int TerrariumController::setRGBColor(int r, int g, int b) 
 {
-	return 0;
+	return _lightController.setRGBColor(r, g, b);
 }
 
 
 // Status
 int TerrariumController::getColorTemperature() 
 {
-	return 0;
+	return _lightController.getColorTemperature();
 }
 
 int TerrariumController::getBrightnessLux() 
 {
-	return 0;
+	return _lightController.getBrightnessLux();
 }
 
 int TerrariumController::getBrightnessFootCandles() 
 {
-	return 0;
+	return _lightController.getBrightnessFootCandles();
 }
 
 float TerrariumController::getHumidity() 
 {
-	return 0;
+	return _climateController.getHumidity();
 }
 
 float TerrariumController::getTemperature() 
 {
-	return 0;
+	return _climateController.getTemperature();
 }
 
 int TerrariumController::getIntakeFanStatus() 
 {
-	return 0;
+	return _climateController.getIntakeFanStatus();
 }
 
 int TerrariumController::getExhaustFanStatus() 
 {
-	return 0;
+	return _climateController.getExhaustFanStatus();
 }
 
 int TerrariumController::getCirculationFanStatus() 
 {
-	return 0;
+	return _climateController.getCirculationFanStatus();
 }
 
 bool TerrariumController::getFoggerStatus() 
 {
-	return true;
+	return _climateController.getFoggerStatus();
 }
 
 bool TerrariumController::getCoolerStatus() 
 {
-	return true;
+	return _climateController.getCoolerStatus();
 }
 
 float TerrariumController::getWetness() 
 {
-	return 0.0;
+	return _climateController.getWetness();
 }
 
 int TerrariumController::getAnalogLEDBrightness() 
 {
-	return 0;
+	return _lightController.getAnalogLEDBrightness();
 }
 
 int TerrariumController::getRGBColor(int& r, int& g, int& b)
 {
-	return 0;
+	return _lightController.getRGBColor(r, g, b);
 }

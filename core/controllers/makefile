@@ -4,16 +4,13 @@ CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++
 
-all: HumidityController LightController TemperatureController TerrariumController
+all: ClimateController LightController TerrariumController
 
-HumidityController:
-	$(CC_C)$(CXX) $(CXX_FLAGS) -c HumidityController.cpp
+ClimateController:
+	$(CC_C)$(CXX) $(CXX_FLAGS) -c ClimateController.cpp
 	
 LightController:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c LightController.cpp
-
-TemperatureController:
-	$(CC_C)$(CXX) $(CXX_FLAGS) -c TemperatureController.cpp
 	
 TerrariumController:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c TerrariumController.cpp

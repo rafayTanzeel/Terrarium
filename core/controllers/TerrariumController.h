@@ -1,10 +1,8 @@
 #ifndef TERRARIUM_CONTROLLER_H
 #define TERRARIUM_CONTROLLER_H
 
-
-#include "HumidityController.h"
 #include "LightController.h"
-#include "TemperatureController.h"
+#include "ClimateController.h"
 
 class TerrariumController 
 {
@@ -61,10 +59,9 @@ public:
 	
 private:
 	//TODO Implement these controllers
-	 HumidityController _humidityController;
+	 ClimateController _climateController;
 	 LightController _lightController;
-	 TemperatureController _temperatureController;
-	
+	 	
 };
 
 #endif
