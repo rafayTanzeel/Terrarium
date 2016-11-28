@@ -17,14 +17,14 @@ app: $(OBJS)
 	$(MAKE) -C libraries
 	$(MAKE) -C modules
 	$(MAKE) -C controllers
-	$(CC_C)$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS) $(LINKER)
+	$(CC_C)$(CXX) $(CXX_FLAGS) -o $(TARGET) $(OBJS) $(LINKER)
 	cp $(TARGET) $(PUBDIR)/$(TARGET)
 
 Terrarium.o: Terrarium.cpp TerrariumServer.o
-	$(CC_C)$(CXX) $(CXXFLAGS) -c Terrarium.cpp
+	$(CC_C)$(CXX) $(CXX_FLAGS) -c Terrarium.cpp
 
 TerrariumServer.o: TerrariumServer.cpp
-	$(CC_C)$(CXX) $(CXXFLAGS) -c TerrariumServer.cpp
+	$(CC_C)$(CXX) $(CXX_FLAGS) -c TerrariumServer.cpp
 
 clean: 
 	rm -f *o $(PUBDIR)/$(TARGET)

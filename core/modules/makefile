@@ -9,7 +9,7 @@ OBJS = $(subst .cpp,.o,$(SRC))
 
 all: $(OBJS)
 
-TempHumiditySensor.o: TempHumiditySensor.cpp
+TempHumiditySensor.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c TempHumiditySensor.cpp
 	
 ColorSensor.o:
@@ -32,12 +32,6 @@ RGBLightStrip.o:
 	
 WaterSensor.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c WaterSensor.cpp
-
-ColorSensor.o: ColorSensor.cpp
-	$(CC_C)$(CXX) $(CXX_FLAGS) -c ColorSensor.cpp
-
-LightSensor.o: LightSensor.cpp
-	$(CC_C)$(CXX) $(CXX_FLAGS) -c LightSensor.cpp
 
 clean: 
 	rm -f *o
