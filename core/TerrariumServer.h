@@ -1,6 +1,7 @@
 #ifndef TERRARIUM_SERVER_H
 #define TERRARIUM_SERVER_H
 
+#include "controllers/TerrariumController.h"
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -8,7 +9,6 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <string.h>
-#include "controllers/TerrariumController.h"
 
 #define MSG_MAX_LEN 1024
 #define PORT 1337
