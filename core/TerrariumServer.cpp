@@ -1,6 +1,9 @@
 #include "TerrariumServer.h"
 
-void* TerrariumServer::listener(void* arg){
+bool TerrariumServer::stopping = false;
+
+void* TerrariumServer::listener(void* arg)
+{
 		char message[MSG_MAX_LEN];
 
 		struct sockaddr_in sin;
@@ -31,7 +34,8 @@ void* TerrariumServer::listener(void* arg){
 		pthread_exit(0);
 }
 
-void TerrariumServer::returnPacket(char* message) {
+void TerrariumServer::returnPacket(char* message) 
+{
 	
 	//TODO: return packets sent from node.js
 	sprintf(message, "%d, %d, %d, %f, %f, %d, %d, %d, %d, %d, %f, %d, %d",

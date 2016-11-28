@@ -1,18 +1,17 @@
 #ifndef LIGHT_SENSOR_H
 #define LIGHT_SENSOR_H
 
+#include "../libraries/Adafruit_TSL2591_Library/Adafruit_TSL2591.h"
+
+#define SENSOR_ID 2591
 
 class LightSensor
-
 {
 
 public:
-	
-  LightSensor(const char * filename, uint8_t addr);
-  
-  uint16_t getLux();
-  
-  uint16_t getFootCandles();
+	LightSensor(const char * filename, uint8_t addr);
+	uint16_t getLux();
+	uint32_t getFootCandles();
 	
 private:
 

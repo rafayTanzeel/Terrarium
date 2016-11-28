@@ -23,7 +23,7 @@ static void returnPacket(char* message);
 
 private:
 
-static _Bool stopping;
+static bool stopping;
 static TerrariumController _terrariumController;
 
 };

@@ -4,7 +4,6 @@ CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++
 
-
 all: TempHumiditySensor ColorSensor Fan LightSensor PWMLightStrip Relay RGBLightStrip WaterSensor
 
 TempHumiditySensor: TempHumiditySensor.cpp
@@ -33,6 +32,9 @@ WaterSensor:
 
 ColorSensor: ColorSensor.cpp
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c ColorSensor.cpp
+
+LightSensor.o: LightSensor.cpp
+	$(CC_C)$(CXX) $(CXX_FLAGS) -c LightSensor.cpp
 
 clean: 
 	rm -f *o
