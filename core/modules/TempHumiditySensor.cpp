@@ -1,4 +1,5 @@
 #include "TempHumiditySensor.h"
+#include <unistd.h>
 
 TempHumiditySensor::TempHumiditySensor(const char * filename, uint8_t addr) 
 {
@@ -15,4 +16,12 @@ float TempHumiditySensor::getHumidity()
 float TempHumiditySensor::getTemperature() 
 {
 	return _sht31.readTemperature();
+}
+
+bool TempHumiditySensor::runHeater(int milliseconds) 
+{
+	_sht31.heater(true);
+	usleep(milliseconds*1000);
+	_sht31.heater(false);
+	return 0;
 }
