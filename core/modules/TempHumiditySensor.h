@@ -3,16 +3,18 @@
 
 #include "../libraries/Adafruit_SHT31_Library/Adafruit_SHT31.h"
 
-class TempHumiditySensor {
-
-private:
-	Adafruit_SHT31 sht31;
-	bool runHeater(int milliseconds);
+class TempHumiditySensor 
+{
 
 public:
 	TempHumiditySensor(const char * filename, uint8_t addr);
 	float getHumidity();
 	float getTemperature();
+
+private:
+	bool runHeater(int milliseconds);	
+	
+	Adafruit_SHT31 _sht31;
 };
 
 #endif

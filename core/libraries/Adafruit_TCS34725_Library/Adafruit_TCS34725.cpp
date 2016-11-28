@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <unistd.h>
+#include <stdio.h>
 
 #include "Adafruit_TCS34725.h"
 #include "../Wire/Wire.h"
@@ -81,7 +82,7 @@ uint16_t Adafruit_TCS34725::read16(uint8_t reg)
 void Adafruit_TCS34725::enable(void)
 {
   write8(TCS34725_ENABLE, TCS34725_ENABLE_PON);
-  usleep(3000);
+  usleep(30000);
   write8(TCS34725_ENABLE, TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN);  
 }
 
@@ -128,9 +129,13 @@ bool Adafruit_TCS34725::begin(void)
 {  
   /* Make sure we're actually connected */
   uint8_t x = read8(TCS34725_ID);
+ // uint8_t x = Wire.read8(_file, TCS34725_ID);
+  
   if ((x != 0x44) && (x != 0x10))
   {
-    return false;
+  	printf("X: 0x%x\n", x);
+  	printf("Error getting chip id\n");
+   // return false;
   }
   _tcs34725Initialised = true;
 
