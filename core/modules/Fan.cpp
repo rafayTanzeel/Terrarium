@@ -3,6 +3,7 @@
 
 static int period = 100000; //nanoseconds
 
+
 Fan::Fan(int pinNumber, int maxRPM) : _pwm(pinNumber), 
                                       _maxRPM(maxRPM), 
                                       _speedPercent(0), 

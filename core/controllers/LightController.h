@@ -1,6 +1,10 @@
 #ifndef LIGHT_CONTROLLER_H
 #define LIGHT_CONTROLLER_H
 
+class ColorSensor;
+class LightSensor;
+class RGBLightStrip;
+class PWMLightStrip;
 
 class LightController 
 {
@@ -8,7 +12,7 @@ class LightController
 
 public:
 
-	LightController();
+	LightController(ColorSensor*& colorSensor, LightSensor*& lightSensor, RGBLightStrip*& rgbLightStrip, PWMLightStrip*& pwmLightStrip);
 
 	//Automatic Control (sets both day and night)
 	int setColorTemperature(int temp, bool useAnalogLEDs = false);
@@ -38,8 +42,10 @@ public:
 	int getRGBColor(int& r, int& g, int& b);
 	
 private:
-
-
+    ColorSensor* _colorSensor;
+    LightSensor* _lightSensor;
+    RGBLightStrip* _rgbLightStrip;
+    PWMLightStrip* _pwmLightStrip;
 };
 
 #endif

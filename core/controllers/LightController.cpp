@@ -1,6 +1,11 @@
+// LightController.cpp
 #include "LightController.h"
+#include "../modules/ColorSensor.h"
+#include "../modules/LightSensor.h"
+#include "../modules/PWMLightStrip.h"
+#include "../modules/RGBLightStrip.h"
 
-LightController::LightController()
+LightController::LightController(ColorSensor*& colorSensor, LightSensor*& lightSensor, RGBLightStrip*& rgbLightStrip, PWMLightStrip*& pwmLightStrip)
 {
 }
 

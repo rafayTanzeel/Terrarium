@@ -1,15 +1,16 @@
 #ifndef TERRARIUM_CONTROLLER_H
 #define TERRARIUM_CONTROLLER_H
 
-#include "LightController.h"
-#include "ClimateController.h"
+
+class LightController;
+class ClimateController;
 
 class TerrariumController 
 {
 //Setters return 0 on success
 
 public:
-	TerrariumController();
+	TerrariumController(ClimateController*& climateController, LightController*& lightController);
 	
 	//Automatic Control (sets both day and night)
 	int setColorTemperature(int temp, bool useAnalogLEDs = false);
@@ -60,8 +61,8 @@ public:
 	
 private:
 	//TODO Implement these controllers
-	 ClimateController _climateController;
-	 LightController _lightController;
+	 ClimateController* _climateController;
+	 LightController* _lightController;
 	 	
 };
 

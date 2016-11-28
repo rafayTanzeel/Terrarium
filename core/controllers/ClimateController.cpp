@@ -1,6 +1,11 @@
+// ClimateController.cpp
 #include "ClimateController.h"
+#include "../modules/Fan.h"
+#include "../modules/Relay.h"
+#include "../modules/TempHumiditySensor.h"
+#include "../modules/WaterSensor.h"
 
-ClimateController::ClimateController()
+ClimateController::ClimateController(Fan*& exhaustFan, Fan*& intakeFan, Fan*& circulationFan, Relay*& fogger, Relay*& cooler, TempHumiditySensor*& tempHumiditySensor, WaterSensor*& waterSensor)                                       
 {
 }
 	

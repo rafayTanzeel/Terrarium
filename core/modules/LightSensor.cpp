@@ -1,3 +1,4 @@
+// LightSensor.cpp
 #include "LightSensor.h"
 
 LightSensor::LightSensor(const char * filename, uint8_t addr) 

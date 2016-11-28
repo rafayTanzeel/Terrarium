@@ -1,6 +1,10 @@
 #ifndef CLIMATE_CONTROLLER_H
 #define CLIMATE_CONTROLLER_H
 
+class Fan;
+class Relay;
+class TempHumiditySensor;
+class WaterSensor;
 
 class ClimateController 
 {
@@ -8,7 +12,7 @@ class ClimateController
 
 public:
 
-	ClimateController();
+	ClimateController(Fan*& exhaustFan, Fan*& intakeFan, Fan*& circulationFan, Relay*& fogger, Relay*& cooler, TempHumiditySensor*& tempHumiditySensor, WaterSensor*& waterSensor);
 	
 	//Automatic Control (sets both day and night)
 	int setTemperature(int temperature); //celsius
@@ -41,7 +45,14 @@ public:
 	float getWetness();
 	
 private:
-
+    Fan* _exhaustFan;
+    Fan* _intakeFan;
+    Fan* _circulationFan;
+    Relay* _fogger;
+    Relay* _cooler;
+    TempHumiditySensor* _tempHumiditySensor;
+    WaterSensor* _waterSensor;
+      
 };
 
 #endif
