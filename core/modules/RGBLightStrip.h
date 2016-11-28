@@ -3,15 +3,15 @@
 
 
 class RGBLightStrip
-
 {
 
 public:
 	
 	RGBLightStrip();
 	~RGBLightStrip();
+	
+	int setColor(int r, int g, int b);
 
-		
 private:
 
 
