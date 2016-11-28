@@ -8,15 +8,14 @@ class PWMLightStrip
 public:
 	
 	PWMLightStrip(int pinNumber);
-	
-	bool getState();
-	bool setState(bool on);
-		
+			
 	int getBrightness();
 	bool setBrightness(int value);
 		
 private:
 
+	bool getState();
+	bool setState(bool on);
 	int _brightness;
 	bool _on;
 };
