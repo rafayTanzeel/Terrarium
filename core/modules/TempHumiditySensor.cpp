@@ -9,6 +9,11 @@ TempHumiditySensor::TempHumiditySensor(const char * filename, uint8_t addr)
 	_sht31.setI2CFile(filename, addr);
 }
 
+TempHumiditySensor::~TempHumiditySensor() 
+{
+	
+}
+
 float TempHumiditySensor::getHumidity() 
 {
 	return _sht31.readHumidity();

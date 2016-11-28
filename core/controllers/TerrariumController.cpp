@@ -7,6 +7,10 @@ TerrariumController::TerrariumController(ClimateController*& climateController, 
 {
 }
 
+TerrariumController::~TerrariumController()
+{
+}
+
 //Automatic Control (sets both day and night)
 int TerrariumController::setColorTemperature(int temp, bool useAnalogLEDs) 
 {

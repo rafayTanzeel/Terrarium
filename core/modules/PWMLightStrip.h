@@ -9,6 +9,7 @@ class PWMLightStrip
 public:
 	
 	PWMLightStrip(int pinNumber);
+	~PWMLightStrip();
 			
 	int getBrightness();
 	bool setBrightness(int value);

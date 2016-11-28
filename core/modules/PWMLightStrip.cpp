@@ -10,6 +10,9 @@ PWMLightStrip::PWMLightStrip(int pinNumber) : _pwm(pinNumber),
     _pwm.setPeriod(period);
 }
 
+PWMLightStrip::~PWMLightStrip()
+{
+}
 	
 bool PWMLightStrip::getState()
 {

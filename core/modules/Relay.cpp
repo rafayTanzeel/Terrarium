@@ -11,6 +11,10 @@ Relay::Relay(int pinNumber, bool initiallyOn)
 
 	setState(initiallyOn);
 }
+
+Relay::~Relay()
+{
+}
 	
 bool Relay::GetState()
 {

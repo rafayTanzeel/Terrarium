@@ -13,6 +13,7 @@ class LightController
 public:
 
 	LightController(ColorSensor*& colorSensor, LightSensor*& lightSensor, RGBLightStrip*& rgbLightStrip, PWMLightStrip*& pwmLightStrip);
+	~LightController();
 
 	//Automatic Control (sets both day and night)
 	int setColorTemperature(int temp, bool useAnalogLEDs = false);

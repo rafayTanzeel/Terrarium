@@ -9,6 +9,7 @@ class WaterSensor
 public:
 	
 	WaterSensor(int pinNumber);
+	~WaterSensor();
 	
 	int getWetness();
 		

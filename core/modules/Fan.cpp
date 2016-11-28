@@ -12,6 +12,10 @@ Fan::Fan(int pinNumber, int maxRPM) : _pwm(pinNumber),
     _pwm.setPeriod(period);
 }
 
+Fan::~Fan()
+{
+}
+
 	
 bool Fan::getState()
 {

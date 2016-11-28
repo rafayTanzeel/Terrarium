@@ -8,6 +8,8 @@ class ColorSensor
 
 public:
 	ColorSensor(const char * filename, uint8_t addr);
+	~ColorSensor();
+	
 	void getRawData(uint16_t *r, uint16_t *g, uint16_t *b, uint16_t *c);
 	uint16_t getColorTemperature();
 	uint16_t getLux();

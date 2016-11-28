@@ -9,6 +9,7 @@ class RGBLightStrip
 public:
 	
 	RGBLightStrip();
+	~RGBLightStrip();
 
 		
 private:

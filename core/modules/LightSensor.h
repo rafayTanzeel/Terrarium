@@ -9,6 +9,8 @@ class LightSensor
 {
 public:
 	LightSensor(const char * filename, uint8_t addr);
+	~LightSensor();
+	
 	uint32_t getLux();
 	uint32_t getFootCandles();
 	

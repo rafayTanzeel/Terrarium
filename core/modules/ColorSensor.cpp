@@ -8,6 +8,10 @@ ColorSensor::ColorSensor(const char * filename, uint8_t addr)
 	_tcs34725.begin();
 }
 
+ColorSensor::~ColorSensor()
+{
+}
+
 void ColorSensor::getRawData(uint16_t *r, uint16_t *g, uint16_t *b, uint16_t *c) 
 {
 	_tcs34725.getRawData(r, g, b, c);

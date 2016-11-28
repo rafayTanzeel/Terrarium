@@ -9,6 +9,10 @@ LightController::LightController(ColorSensor*& colorSensor, LightSensor*& lightS
 {
 }
 
+LightController::~LightController()
+{
+}
+
 //Automatic Control (sets both day and night)
 int LightController::setColorTemperature(int temp, bool useAnalogLEDs)
 {

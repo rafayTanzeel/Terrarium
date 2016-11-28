@@ -9,6 +9,7 @@ class Fan
 public:
 	
 	Fan(int pinNumber, int maxRPM);
+	~Fan();
 	
 	bool getState();
 	bool setState(bool on);

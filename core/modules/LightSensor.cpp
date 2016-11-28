@@ -8,6 +8,10 @@ LightSensor::LightSensor(const char * filename, uint8_t addr)
 	_tsl2591.begin();
 }
 
+LightSensor::~LightSensor()
+{
+}
+
 uint32_t LightSensor::getLux() 
 {
 	uint16_t luminosity_full = _tsl2591.getLuminosity(TSL2591_FULLSPECTRUM);

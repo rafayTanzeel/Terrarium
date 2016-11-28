@@ -6,6 +6,7 @@ class Relay
 
 public:
 	Relay(int pinNumber, bool initiallyOn = false);
+	~Relay();
 	
 	bool GetState();
 	bool setState(bool on);

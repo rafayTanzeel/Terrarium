@@ -13,6 +13,7 @@ class ClimateController
 public:
 
 	ClimateController(Fan*& exhaustFan, Fan*& intakeFan, Fan*& circulationFan, Relay*& fogger, Relay*& cooler, TempHumiditySensor*& tempHumiditySensor, WaterSensor*& waterSensor);
+	~ClimateController();
 	
 	//Automatic Control (sets both day and night)
 	int setTemperature(int temperature); //celsius
