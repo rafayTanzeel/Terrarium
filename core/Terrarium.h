@@ -5,8 +5,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "modules/TempHumiditySensor.h"
+
+#include "Api.h"
 #include "TerrariumServer.h"
+#include "modules/TempHumiditySensor.h"
 
 #define SHT31_DEFAULT_ADDR 0x44
 #define I2CDRV_LINUX_BUS0 "/dev/i2c-0"
