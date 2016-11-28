@@ -1,6 +1,7 @@
 #ifndef PWM_H
 #define PWM_H
 
+#include <string>
 
 int exportPWM(int pinNumber);
 

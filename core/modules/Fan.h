@@ -1,9 +1,9 @@
 #ifndef FAN_H
 #define FAN_H
 
+#include "../tools/PWM.h"
 
 class Fan
-
 {
 
 public:
@@ -24,9 +24,11 @@ public:
 	
 private:
 
+	PWM _pwm;
 	int _maxRPM;
 	int _speedPercent;
 	bool _on;
+	
 };
 
 

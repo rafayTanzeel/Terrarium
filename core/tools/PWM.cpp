@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <map>
-#include <cstring>
 #include <unistd.h>
 #include <dirent.h>
 #include "PWM.h"
