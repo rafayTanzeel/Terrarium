@@ -28,6 +28,7 @@ public:
 	//Manual Control
 	int setAnalogLEDBrightness(int brightness);
 	int setRGBColor(int r, int g, int b);
+	int cycleRGBEffects();
 
 	// Status
 	int getColorTemperature();

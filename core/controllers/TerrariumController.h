@@ -41,6 +41,7 @@ public:
 	int setCoolerStatus(bool on);
 	int setAnalogLEDBrightness(int brightness);
 	int setRGBColor(int r, int g, int b);
+	int cycleRGBEffects();
 
 	// Status
 	int getColorTemperature();

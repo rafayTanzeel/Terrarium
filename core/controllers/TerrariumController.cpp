@@ -135,6 +135,11 @@ int TerrariumController::setRGBColor(int r, int g, int b)
 	return _lightController.setRGBColor(r, g, b);
 }
 
+int TerrariumController::cycleRGBEffects()
+{
+    return _lightController.cycleRGBEffects();
+}
+
 
 // Status
 int TerrariumController::getColorTemperature() 

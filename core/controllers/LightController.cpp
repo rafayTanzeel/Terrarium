@@ -74,6 +74,12 @@ int LightController::setRGBColor(int r, int g, int b)
     return 0;
 }
 
+int LightController::cycleRGBEffects()
+{
+    return 0;
+}
+
+
 // Status
 
 int LightController::getColorTemperature()
