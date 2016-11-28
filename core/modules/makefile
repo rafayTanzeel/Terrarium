@@ -4,37 +4,34 @@ CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++
 
-all: TempHumiditySensor ColorSensor Fan LightSensor PWMLightStrip Relay RGBLightStrip WaterSensor
+SRC = TempHumiditySensor.cpp ColorSensor.cpp Fan.cpp LightSensor.cpp PWMLightStrip.cpp Relay.cpp RGBLightStrip.cpp WaterSensor.cpp
+OBJS = $(subst .cpp,.o,$(SRC))
 
-TempHumiditySensor: TempHumiditySensor.cpp
+all: $(OBJS)
+
+TempHumiditySensor.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c TempHumiditySensor.cpp
 	
-ColorSensor:
+ColorSensor.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c ColorSensor.cpp
 	
-Fan:
+Fan.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c Fan.cpp
 	
-LightSensor:
+LightSensor.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c LightSensor.cpp
 	
-PWMLightStrip:
+PWMLightStrip.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c PWMLightStrip.cpp
 	
-Relay:
+Relay.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c Relay.cpp
 	
-RGBLightStrip:
+RGBLightStrip.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c RGBLightStrip.cpp
 	
-WaterSensor:
+WaterSensor.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c WaterSensor.cpp
-
-ColorSensor: ColorSensor.cpp
-	$(CC_C)$(CXX) $(CXX_FLAGS) -c ColorSensor.cpp
-
-LightSensor.o: LightSensor.cpp
-	$(CC_C)$(CXX) $(CXX_FLAGS) -c LightSensor.cpp
 
 clean: 
 	rm -f *o
