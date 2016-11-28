@@ -1,7 +1,7 @@
 #ifndef TERRARIUMSERVER_H
 #define TERRARIUMSERVER_H
 
-#include "Api.h"
+#include "controllers/TerrariumController.h"
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdio.h>

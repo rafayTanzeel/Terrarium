@@ -4,10 +4,16 @@ CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++
 
-all: TempHumiditySensor
+SRC = TempHumiditySensor.cpp ColorSensor.cpp
+OBJS = $(subst .cpp,.o,$(SRC))
 
-TempHumiditySensor:
+all: $(OBJS)
+
+TempHumiditySensor.o: TempHumiditySensor.cpp
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c TempHumiditySensor.cpp
+
+ColorSensor.o: ColorSensor.cpp
+	$(CC_C)$(CXX) $(CXX_FLAGS) -c ColorSensor.cpp
 
 clean: 
 	rm -f *o

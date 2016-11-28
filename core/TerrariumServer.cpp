@@ -34,5 +34,5 @@ void* listener(void* arg){
 void returnPacket(char* message) {
 	//TODO: return packets sent from node.js
 	sprintf(message, "%d, %d, %d, %f, %f, %d, %d, %d, %d, %d, %f, %d, %d",
-	 1, 2, 3, getHumidity(), getTemperature(), 6, 7, 8, 9, 10, 11.0, 12, 13);
+	 1, 2, 3, 4.0, 5.0, 6, 7, 8, 9, 10, 11.0, 12, 13);
 }

@@ -5,23 +5,25 @@ CC = gcc
 CXX = g++
 
 PUBDIR = $(HOME)/cmpt433/public/myApps
-SRC = Terrarium.cpp
 TARGET = terrarium
 LINKER = -lpthread -lm
 
+SRC = Terrarium.cpp TerrariumServer.cpp
+OBJS = $(subst .cpp,.o,$(SRC))
+
 all: app
 
-app: TerrariumServer.o
+app: $(OBJS)
 	$(MAKE) -C libraries
 	$(MAKE) -C modules
-	$(CC_C)$(CXX) $(CXXFLAGS) TerrariumServer.o modules/TempHumiditySensor.o libraries/Adafruit_SHT31_Library/Adafruit_SHT31.o libraries/Wire/Wire.o $(SRC) -o $(TARGET) $(LINKER)
+	$(CC_C)$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS) $(LINKER)
 	cp $(TARGET) $(PUBDIR)/$(TARGET)
 
-TerrariumServer.o: TerrariumServer.cpp
-	$(CC_C)$(CXX) $(CXXFLAGS) TerrariumServer.cpp -c TerrariumServer.cpp
+Terrarium.o: Terrarium.cpp
+	$(CC_C)$(CXX) $(CXXFLAGS) -c Terrarium.cpp
 
-Api.o: Api.cpp
-	$(CC_C)$(CXX) $(CXXFLAGS) -c Api.cpp
+TerrariumServer.o: TerrariumServer.cpp
+	$(CC_C)$(CXX) $(CXXFLAGS) -c TerrariumServer.cpp
 
 clean: 
 	rm -f *o $(PUBDIR)/$(TARGET)
