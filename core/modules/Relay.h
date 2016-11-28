@@ -2,7 +2,6 @@
 #define RELAY_H
 
 class Relay
-
 {
 
 public:
@@ -11,11 +10,9 @@ public:
 	bool GetState();
 	bool setState(bool on);
 
-	
 private:
 	int _pinNumber;
 
 };
-
 
 #endif

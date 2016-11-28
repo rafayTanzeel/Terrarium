@@ -8,17 +8,17 @@ TerrariumController::TerrariumController()
 
 //Automatic Control (sets both day and night)
 
-int TerrariumController::setColorTemperature(int temp, bool useAnalogLEDs = false)
+int TerrariumController::setColorTemperature(int temp, bool useAnalogLEDs)
 {
 	return 0;
 }
 
-int TerrariumController::setBrightnessLux(int lux, bool useAnalogLEDs = false)
+int TerrariumController::setBrightnessLux(int lux, bool useAnalogLEDs)
 {
 	return 0;
 }
 
-int TerrariumController::setBrightnessFootcandles(int footcandles, bool useAnalogLEDs = false)
+int TerrariumController::setBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
 	return 0;
 }
@@ -51,32 +51,32 @@ int TerrariumController::setNightTime(int hours, int minutes, int seconds)
 	return 0;
 }
 
-int TerrariumController::setDayColorTemperature(int temp, bool useAnalogLEDs = false)
+int TerrariumController::setDayColorTemperature(int temp, bool useAnalogLEDs)
 {
 	return 0;
 }
 
-int TerrariumController::setNightColorTemperature(int temp, bool useAnalogLEDs = false)
+int TerrariumController::setNightColorTemperature(int temp, bool useAnalogLEDs)
 {
 	return 0;
 }
 
-int TerrariumController::setDayBrightnessLux(int lux, bool useAnalogLEDs = false)
+int TerrariumController::setDayBrightnessLux(int lux, bool useAnalogLEDs)
 {
 	return 0;
 }
 
-int TerrariumController::setNightBrightnessLux(int lux, bool useAnalogLEDs = false)
+int TerrariumController::setNightBrightnessLux(int lux, bool useAnalogLEDs)
 {
 	return 0;
 }
 
-int TerrariumController::setDayBrightnessFootcandles(int footcandles, bool useAnalogLEDs = false)
+int TerrariumController::setDayBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
 	return 0;
 }
 
-int TerrariumController::setNightBrightnessFootcandles(int footcandles, bool useAnalogLEDs = false)
+int TerrariumController::setNightBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
 	return 0;
 }
@@ -207,9 +207,5 @@ int TerrariumController::getRGBColor(int& r, int& g, int& b)
 {
 	return 0;
 }
-	
-private:
 
-};
 
-#endif

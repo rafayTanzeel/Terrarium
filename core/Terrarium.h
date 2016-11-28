@@ -18,5 +18,7 @@
 
 _Bool stopping = false;
 
+TerrariumServer _terrariumServer;
+
 #endif
 

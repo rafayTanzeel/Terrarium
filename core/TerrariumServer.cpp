@@ -1,6 +1,6 @@
 #include "TerrariumServer.h"
 
-void* listener(void* arg){
+void* TerrariumServer::listener(void* arg){
 		char message[MSG_MAX_LEN];
 
 		struct sockaddr_in sin;
@@ -31,8 +31,9 @@ void* listener(void* arg){
 		pthread_exit(0);
 }
 
-void returnPacket(char* message) {
+void TerrariumServer::returnPacket(char* message) {
+	float bla = _terrariumController.getHumidity();
 	//TODO: return packets sent from node.js
-	sprintf(message, "%d, %d, %d, %f, %f, %d, %d, %d, %d, %d, %f, %d, %d",
-	 1, 2, 3, getHumidity(), getTemperature(), 6, 7, 8, 9, 10, 11.0, 12, 13);
+//	sprintf(message, "%d, %d, %d, %f, %f, %d, %d, %d, %d, %d, %f, %d, %d",
+	// 1, 2, 3, _terrariumController.getHumidity(), _terrariumController.getTemperature(), 6, 7, 8, 9, 10, 11.0, 12, 13);
 }

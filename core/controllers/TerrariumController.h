@@ -1,6 +1,10 @@
 #ifndef TERRARIUM_CONTROLLER_H
 #define TERRARIUM_CONTROLLER_H
 
+#include "HumidityController.h"
+#include "LightController.h"
+#include "TemperatureController.h"
+
 class TerrariumController 
 {
 //Setters return 0 on success

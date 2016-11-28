@@ -10,7 +10,7 @@ int main() {
 	pthread_attr_init(&attr);
 
 	// Create threads
-	pthread_create(&tid[0], &attr, listener, NULL); 	// Server Thread
+	pthread_create(&tid[0], &attr, TerrariumServer::listener, NULL); 	// Server Thread
 
 	// Wait for threads to finish
 	for(int i = 0; i < NUM_THREADS; i++) {
