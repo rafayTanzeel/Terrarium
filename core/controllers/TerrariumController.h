@@ -61,7 +61,6 @@ public:
 	int getRGBColor(int& r, int& g, int& b);
 	
 private:
-	//TODO Implement these controllers
 	 ClimateController* _climateController;
 	 LightController* _lightController;
 	 	

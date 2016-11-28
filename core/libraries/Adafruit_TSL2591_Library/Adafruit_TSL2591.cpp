@@ -68,9 +68,7 @@ Adafruit_TSL2591::Adafruit_TSL2591(int32_t sensorID)
 
 bool Adafruit_TSL2591::begin(void)
 {
-
-  
-  for (uint8_t i=0; i<0x20; i++)
+/*  for (uint8_t i=0; i<0x20; i++)
   {
     uint8_t id = read8(0x12);
     printf("$"); 
@@ -78,7 +76,7 @@ bool Adafruit_TSL2591::begin(void)
     printf(" = 0x"); 
     printf("%x\n", read8(i));
   }
-  
+  */
 
   uint8_t id = read8(TSL2591_COMMAND_BIT | TSL2591_REGISTER_DEVICE_ID);
   if (id == 0x50 )
@@ -181,7 +179,7 @@ uint32_t Adafruit_TSL2591::calculateLux(uint16_t ch0, uint16_t ch1)
 {
   float    atime, again;
   float    cpl, lux1, lux2, lux;
-  uint32_t chan0, chan1;
+  //uint32_t chan0, chan1;
 
   // Check for overflow conditions first
   if ((ch0 == 0xFFFF) | (ch1 == 0xFFFF))

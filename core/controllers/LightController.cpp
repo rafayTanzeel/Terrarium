@@ -5,12 +5,23 @@
 #include "../modules/PWMLightStrip.h"
 #include "../modules/RGBLightStrip.h"
 
-LightController::LightController(ColorSensor*& colorSensor, LightSensor*& lightSensor, RGBLightStrip*& rgbLightStrip, PWMLightStrip*& pwmLightStrip)
+LightController::LightController(ColorSensor*& colorSensor, LightSensor*& lightSensor, RGBLightStrip*& rgbLightStrip, PWMLightStrip*& pwmLightStrip) : _colorSensor(colorSensor),
+                                                                _lightSensor(lightSensor),
+                                                                _rgbLightStrip(rgbLightStrip),
+                                                                _pwmLightStrip(pwmLightStrip)
 {
+    colorSensor = nullptr;
+    lightSensor = nullptr;
+    rgbLightStrip = nullptr;
+    pwmLightStrip = nullptr;
 }
 
 LightController::~LightController()
 {
+    delete _colorSensor; _colorSensor = nullptr;
+    delete _lightSensor; _lightSensor = nullptr;
+    delete _rgbLightStrip; _rgbLightStrip = nullptr;
+    delete _pwmLightStrip; _pwmLightStrip = nullptr;
 }
 
 //Automatic Control (sets both day and night)

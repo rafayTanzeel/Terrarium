@@ -3,12 +3,16 @@
 #include "LightController.h"
 #include "ClimateController.h"
 
-TerrariumController::TerrariumController(ClimateController*& climateController, LightController*& lightController)
+TerrariumController::TerrariumController(ClimateController*& climateController, LightController*& lightController) : _climateController(climateController), _lightController(lightController)
 {
+    climateController = nullptr;
+    lightController = nullptr;
 }
 
 TerrariumController::~TerrariumController()
 {
+    delete _climateController; _climateController = nullptr;
+    delete _lightController; _lightController = nullptr;
 }
 
 //Automatic Control (sets both day and night)

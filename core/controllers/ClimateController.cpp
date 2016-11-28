@@ -5,12 +5,32 @@
 #include "../modules/TempHumiditySensor.h"
 #include "../modules/WaterSensor.h"
 
-ClimateController::ClimateController(Fan*& exhaustFan, Fan*& intakeFan, Fan*& circulationFan, Relay*& fogger, Relay*& cooler, TempHumiditySensor*& tempHumiditySensor, WaterSensor*& waterSensor)                                       
+ClimateController::ClimateController(Fan*& exhaustFan, Fan*& intakeFan, Fan*& circulationFan, Relay*& fogger, Relay*& cooler, TempHumiditySensor*& tempHumiditySensor, WaterSensor*& waterSensor) : _exhaustFan(exhaustFan),
+               _intakeFan(intakeFan),
+               _circulationFan(circulationFan),
+               _fogger(fogger),
+               _cooler(cooler),
+               _tempHumiditySensor(tempHumiditySensor),
+               _waterSensor(waterSensor)                           
 {
+    exhaustFan = nullptr;
+    intakeFan = nullptr;
+    circulationFan = nullptr;
+    fogger = nullptr;
+    cooler = nullptr;
+    tempHumiditySensor = nullptr;
+    waterSensor = nullptr;
 }
 
 ClimateController::~ClimateController()
 {
+    delete _exhaustFan; _exhaustFan = nullptr;
+    delete _intakeFan; _intakeFan = nullptr;
+    delete _circulationFan; _circulationFan = nullptr;
+    delete _fogger; _fogger = nullptr;
+    delete _cooler; _cooler = nullptr;
+    delete _tempHumiditySensor; _tempHumiditySensor = nullptr;
+    delete _waterSensor; _waterSensor = nullptr;
 }
 	
 //Automatic Control (sets both day and night)

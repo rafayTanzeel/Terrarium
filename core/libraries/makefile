@@ -1,5 +1,3 @@
-CXXFLAGS = -Wall -g -Werror
-CC = arm-linux-gnueabihf-g++
 
 all:
 	$(MAKE) -C Wire

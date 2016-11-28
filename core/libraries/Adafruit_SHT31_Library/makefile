@@ -1,10 +1,13 @@
-CC=arm-linux-gnueabihf-g++
-CFLAGS=-lm -pthread -g
+CC_FLAGS = -Wall -g -std=c99 -D _POSIX_C_SOURCE=200809L -Werror
+CXX_FLAGS = -Wall -g -Werror -std=c++11
+CC_C = arm-linux-gnueabihf-
+CC = gcc
+CXX = g++
 
 all: Adafruit_SHT31
 
 Adafruit_SHT31:
-	$(CC) -c Adafruit_SHT31.cpp $(CFLAGS)
+	$(CC_C)$(CXX) $(CXX_FLAGS) -c Adafruit_SHT31.cpp $(CFLAGS)
 
 SHT31: SHTTest.cpp Adafruit_SHT31.cpp ../Wire/Wire.cpp
 	$(CC) SHTTest.cpp Adafruit_SHT31.cpp ../Wire/Wire.cpp -o SHT31 $(CFLAGS)
