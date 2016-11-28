@@ -16,6 +16,7 @@
 #define NUM_THREADS 1
 
 _Bool stopping = false;
+TempHumiditySensor ths = TempHumiditySensor(I2CDRV_LINUX_BUS2, SHT31_DEFAULT_ADDR);
 
 #endif
 

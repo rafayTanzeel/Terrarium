@@ -11,14 +11,14 @@ LINKER = -lpthread -lm
 
 all: app
 
-app:
+app: TerrariumServer.o
 	$(MAKE) -C libraries
 	$(MAKE) -C modules
-	$(CC_C)$(CXX) $(CXXFLAGS) modules/TempHumiditySensor.o libraries/Adafruit_SHT31_Library/Adafruit_SHT31.o libraries/Wire/Wire.o $(SRC) -o $(TARGET) $(LINKER)
+	$(CC_C)$(CXX) $(CXXFLAGS) TerrariumServer.o modules/TempHumiditySensor.o libraries/Adafruit_SHT31_Library/Adafruit_SHT31.o libraries/Wire/Wire.o $(SRC) -o $(TARGET) $(LINKER)
 	cp $(TARGET) $(PUBDIR)/$(TARGET)
 
 TerrariumServer.o: TerrariumServer.cpp
-	$(CC_C)$(CXX) $(CXXFLAGS) -c TerrariumServer.c
+	$(CC_C)$(CXX) $(CXXFLAGS) -c TerrariumServer.cpp
 
 clean: 
 	rm -f *o $(PUBDIR)/$(TARGET)

@@ -1,30 +1,30 @@
 #include "Terrarium.h"
 
+void setup();
+
 int main() {
 	// Run our program!
 	printf("Beginning of Terrarium program..\n");
 
 	// Setup
-	TempHumiditySensor ths = TempHumiditySensor(I2CDRV_LINUX_BUS2, SHT31_DEFAULT_ADDR);
+	setup();
 
-	float temp = ths.getTemperature();
-	float hum = ths.getHumidity();
+	// Setup thread attributes
+	pthread_attr_t attr;
+	pthread_t* tid = (pthread_t*)malloc(sizeof(*tid)*NUM_THREADS);
+	pthread_attr_init(&attr);
 
-	printf("TEMP: %f -- HUM: %f\n", temp, hum);
+	// Create threads
+	pthread_create(&tid[0], &attr, listener, NULL); 	// Server Thread
 
-	// // Setup thread attributes
-	// pthread_attr_t attr;
-	// pthread_t* tid = (pthread_t*)malloc(sizeof(*tid)*NUM_THREADS);
-	// pthread_attr_init(&attr);
+	// Wait for threads to finish
+	for(int i = 0; i < NUM_THREADS; i++) {
+		pthread_join(tid[i], NULL);
+	}
 
-	// // Create threads
-	// pthread_create(&tid[0], &attr, listener, NULL); 	// Server Thread
+	free(tid);
+	printf("Stopping Terrarium program..\n");
+}
 
-	// // Wait for threads to finish
-	// for(int i = 0; i < NUM_THREADS; i++) {
-	// 	pthread_join(tid[i], NULL);
-	// }
-
-	// free(tid);
-	printf("Stopping Terrarium program..");
+void setup() {
 }
