@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../farbtastic/farbtastic.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../styles/style.css" type="text/css">
+    <link rel="stylesheet" href="../bower_components/wickedpicker/stylesheets/wickedpicker.css" type="text/css">
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
@@ -129,9 +130,25 @@
 
 
         <div class="row">
-            <section class="col-xs-12">
-                <div class="jumbotron">
-                    <h1>Auto Ctrl Day & Night Time</h1>
+            <section class="col-xs-12 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color: #489eb2">Day Time</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <input type="text" name="daytimepicker" class="timepicker" id="Dtime"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-xs-12 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color: #489eb2">Night Time</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <input type="text" name="nighttimepicker" class="timepicker" id="Ntime"/>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -146,4 +163,6 @@
 <script src="../scripts/script.js" type=text/javascript></script>
 <script src="../farbtastic/farbtastic.js" type=text/javascript></script>
 <script src="../bower_components/bootstrap/dist/js/bootstrap.js" type=text/javascript></script>
+<script src="../scripts/autoDN.js" type=text/javascript></script>
+<script type="text/javascript" src="../bower_components/wickedpicker/src/wickedpicker.js"></script>
 </html>

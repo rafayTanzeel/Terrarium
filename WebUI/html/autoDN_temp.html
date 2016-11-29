@@ -127,9 +127,124 @@
             </div>
         </div>
         <div class="row">
-            <section class="col-xs-12">
-                <div class="jumbotron">
-                    <h1>Auto Ctrl Day & Night Temperature</h1>
+            <section class="col-xs-12 col-lg-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color: #489eb2">Day Color Temperature</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <form>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" id="dayColorTempNegbtn" type="button">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                    <input id="dayColorTemp" type="number" class="form-control" name="colorTemp" value="25" max="100" min="0" placeholder="Day Color Temperature">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" id="dayColorTempPosbtn" type="button">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                <span class="checkbox checkbox-slider--b-flat">
+                                    <label>
+                                        <input type="checkbox" checked><span>Use Analog LEDs</span>
+                                    </label>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-xs-12 col-lg-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color: #489eb2">Day Color Temperature</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <form>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" id="nightColorTempNegbtn" type="button">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                    <input id="nightColorTemp" type="number" class="form-control" name="colorTemp" value="25" max="100" min="0" placeholder="Day Color Temperature">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" id="nightColorTempPosbtn" type="button">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                <span class="checkbox checkbox-slider--b-flat">
+                                    <label>
+                                        <input type="checkbox" checked><span>Use Analog LEDs</span>
+                                    </label>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="col-xs-12 col-lg-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color: #489eb2">Day Temperature</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <form>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" id="dayTempNegbtn" type="button">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                    <input id="dayTemp" type="number" class="form-control" name="colorTemp" value="25" max="100" min="0" placeholder="Day Temperature">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" id="dayTempPosbtn" type="button">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section class="col-xs-12 col-lg-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color: #489eb2">Night Temperature</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <form>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" id="nightTempNegbtn" type="button">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                    <input id="nightTemp" type="number" class="form-control" name="colorTemp" value="25" max="100" min="0" placeholder="Night Temperature">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" id="nightTempPosbtn" type="button">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -144,4 +259,6 @@
 <script src="../scripts/script.js" type=text/javascript></script>
 <script src="../farbtastic/farbtastic.js" type=text/javascript></script>
 <script src="../bower_components/bootstrap/dist/js/bootstrap.js" type=text/javascript></script>
+<script src="../scripts/autoDN.js" type=text/javascript></script>
+
 </html>

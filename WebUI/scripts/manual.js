@@ -13,11 +13,8 @@ $(function() {
         $("#Bcolor").val(b).css('background-color',"rgb(0,0,"+b+")");
     });
 
-
         posBtn("#brightpos", "#manualbright");
         negBtn("#brightneg", "#manualbright");
-
-
 }
 );
 

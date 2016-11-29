@@ -111,30 +111,166 @@
     </div>
 </nav>
 <div id="main">
-<article>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Brightness
-                </h1>
-                <div class="row">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">Auto_D&N</li>
-                        <li class="breadcrumb-item active">Brightness</li>
-                    </ol>
+    <article>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Brightness
+                    </h1>
+                    <div class="row">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">Auto_D&N</li>
+                            <li class="breadcrumb-item active">Brightness</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                <section class="col-xs-12 col-lg-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" style="background-color: #489eb2">Day Brightness Lux</div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <form>
+                                    <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" id="dayBrightLuxNegbtn" type="button">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                        <input id="dayBrightLux" type="number" class="form-control" name="colorTemp" value="25" max="100" min="0" placeholder="Day Brightness Lux">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" id="dayBrightLuxPosbtn" type="button">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                <span class="checkbox checkbox-slider--b-flat">
+                                    <label>
+                                        <input type="checkbox" checked><span>Use Analog LEDs</span>
+                                    </label>
+                                </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="col-xs-12 col-lg-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" style="background-color: #489eb2">Night Brightness Lux</div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <form>
+                                    <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" id="nightBrightLuxNegbtn" type="button">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                        <input id="nightBrightLux" type="number" class="form-control" name="colorTemp" value="25" max="100" min="0" placeholder="Night Brightness Lux">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" id="nightBrightLuxPosbtn" type="button">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                <span class="checkbox checkbox-slider--b-flat">
+                                    <label>
+                                        <input type="checkbox" checked><span>Use Analog LEDs</span>
+                                    </label>
+                                </span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="col-xs-12 col-lg-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" style="background-color: #489eb2">Day Brightness Footcandles</div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <form>
+                                    <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" id="dayBrightFCNegbtn" type="button">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                        <input id="dayBrightFC" type="number" class="form-control" name="colorTemp" value="25" max="100" min="0" placeholder="Day Brightness Footcandles">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" id="dayBrightFCPosbtn" type="button">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                <span class="checkbox checkbox-slider--b-flat">
+                                    <label>
+                                        <input type="checkbox" checked><span>Use Analog LEDs</span>
+                                    </label>
+                                </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <section class="col-xs-12 col-lg-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" style="background-color: #489eb2">Night Brightness Footcandles</div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <form>
+                                    <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" id="nightBrightFCNegbtn" type="button">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                        <input id="nightBrightFC" type="number" class="form-control" name="colorTemp" value="25" max="100" min="0" placeholder="Night Brightness Footcandles">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" id="nightBrightFCPosbtn" type="button">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                <span class="checkbox checkbox-slider--b-flat">
+                                    <label>
+                                        <input type="checkbox" checked><span>Use Analog LEDs</span>
+                                    </label>
+                                </span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
         </div>
-        <div class="row">
-            <section class="col-xs-12">
-                <div class="jumbotron">
-                    <h1>Auto Ctrl Day & Night Brightness</h1>
-                </div>
-            </section>
-        </div>
-    </div>
-</article>
+    </article>
 </div>
 
 </body>
@@ -145,4 +281,5 @@
 <script src="../scripts/script.js" type=text/javascript></script>
 <script src="../farbtastic/farbtastic.js" type=text/javascript></script>
 <script src="../bower_components/bootstrap/dist/js/bootstrap.js" type=text/javascript></script>
+<script src="../scripts/autoDN.js" type=text/javascript></script>
 </html>
