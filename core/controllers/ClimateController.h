@@ -72,7 +72,7 @@ private:
     
     int _dayTemperature = 25;
     int _nightTemperature = 20;
-    int _dayHumidity = 90;
+    int _dayHumidity = 80;
     int _nightHumidity = 50;
     int _wetnessThreshold;
     
