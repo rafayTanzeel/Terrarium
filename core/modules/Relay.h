@@ -8,8 +8,8 @@ public:
 	Relay(int pinNumber, bool initiallyOn = false);
 	~Relay();
 	
-	bool GetState();
-	bool setState(bool on);
+	bool getState();
+	int setState(bool on);
 
 private:
 	int _pinNumber;

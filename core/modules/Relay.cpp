@@ -16,12 +16,12 @@ Relay::~Relay()
 {
 }
 	
-bool Relay::GetState()
+bool Relay::getState()
 {
 	return getValue(_pinNumber);
 }
 	
-bool Relay::setState(bool on)
+int Relay::setState(bool on)
 {
 	return setValue(_pinNumber, on);
 }

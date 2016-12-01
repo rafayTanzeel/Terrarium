@@ -37,16 +37,21 @@ ClimateController::~ClimateController()
 
 int ClimateController::setTemperature(int temperature) //celsius
 { 
+    _dayTemperature = temperature;
+    _nightTemperature = temperature;
     return 0;
 } 
 
 int ClimateController::setHumidity(int humidity)
 {
+    _dayHumidity = humidity;
+    _nightHumidity = humidity;
     return 0;
 }
 
 int ClimateController::setWetnessAlarmThreshold(int threshold)
 {
+    _wetnessThreshold = threshold;
     return 0;
 }
 	
@@ -64,71 +69,72 @@ int ClimateController::setNightTime(int hours, int minutes, int seconds)
 
 int ClimateController::setDayTemperature(int temperature) //celsius
 {
+    _dayTemperature = temperature;
     return 0;
 }
 
 int ClimateController::setNightTemperature(int temperature) //celsius
 {
-    return 0;
+    _nightTemperature = temperature;
 }
 
 int ClimateController::setDayHumidity(int humidity)
 {
-    return 0;
+    _dayHumidity = humidity;
 }
 
 int ClimateController::setNightHumidity(int humidity)
 {
-    return 0;
+    _nightHumidity = humidity;
 }
 
 //Manual Control
 
 int ClimateController::setCoolerStatus(bool on)
 {
-    return 0;
+    return _cooler->setState(on);
 }
 
 int ClimateController::setIntakeFanStatus(bool on)
 {
-    return 0;
+    return _intakeFan->setState(on);
 }
 
 int ClimateController::setExhaustFanStatus(bool on)
 {
-    return 0;
+    return _exhaustFan->setState(on);
 }
 
 int ClimateController::setCirculationFanStatus(bool on)
 {
-    return 0;
+    return _circulationFan->setState(on);
 }
 
 int ClimateController::setFoggerStatus(bool on)
 {
-    return 0;
+    return _fogger->setState(on);
 }
 	
 // Status
 
 float ClimateController::getTemperature()
 {
-    return 0.0;
+    return _tempHumiditySensor->getTemperature();
 }
 
 bool ClimateController::getCoolerStatus()
 {
-    return false;
+    return _cooler->getState();
 }
 
 bool ClimateController::getFoggerStatus()
 {
-    return false;
+    return _fogger->getState();
 }
 
 float ClimateController::getHumidity()
 {
-    return 0.0;
+    return _tempHumiditySensor->getHumidity();
 }
 
 int ClimateController::getIntakeFanStatus()
@@ -148,6 +154,6 @@ int ClimateController::getCirculationFanStatus()
 
 float ClimateController::getWetness()
 {
-    return 0.0;
+    return _waterSensor->getWetness
 }
 

@@ -1,6 +1,8 @@
 #ifndef CLIMATE_CONTROLLER_H
 #define CLIMATE_CONTROLLER_H
 
+#include <time.h>
+
 class Fan;
 class Relay;
 class TempHumiditySensor;
@@ -53,6 +55,16 @@ private:
     Relay* _cooler;
     TempHumiditySensor* _tempHumiditySensor;
     WaterSensor* _waterSensor;
+    
+    time_t _dayTime;
+    time_t _nightTime;
+    
+    int _dayTemperature;
+    int _nightTemperature;
+    int _dayHumidity;
+    int _nightHumidity;
+    
+    int _wetnessThreshold;
       
 };
 

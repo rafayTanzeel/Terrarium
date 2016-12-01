@@ -2,6 +2,7 @@
 #define TEMP_HUMIDITY_SENSOR_H
 
 #include "../libraries/Adafruit_SHT31_Library/Adafruit_SHT31.h"
+#include <time.h>
 
 class TempHumiditySensor 
 {
@@ -17,6 +18,8 @@ public:
 private:
 	
 	Adafruit_SHT31 _sht31;
+	time_t _heaterLastRun;
+	
 };
 
 #endif
