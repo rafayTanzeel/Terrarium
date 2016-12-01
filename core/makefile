@@ -1,5 +1,5 @@
 CC_FLAGS = -Wall -g -std=c99 -D _POSIX_C_SOURCE=200809L -Werror
-CXX_FLAGS = -Wall -Wconversion -g -Werror -std=c++11
+CXX_FLAGS = -Wall -Wconversion -g -Werror -std=c++11 -static
 CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++

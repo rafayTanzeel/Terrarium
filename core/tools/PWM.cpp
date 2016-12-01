@@ -110,6 +110,10 @@ int PWM::initPinFS()
     
     _pwmChip = getFullNameOfFileInDirectory(chipPath, "pwmchip");
     
+    if (_pwmChip == "") {
+        return -1;
+    }
+    
     std::string pinInterfacePath = std::string(PWM_DIR) + _pwmChip + "/" + pwmNumber + "/";
     
     _dutyCyclePath = pinInterfacePath + "duty_cycle";
@@ -133,7 +137,8 @@ std::string PWM::getFullNameOfFileInDirectory(const std::string & dirName, const
 	if ((pDir = opendir(dirName.c_str())) == NULL)
 	{
 		printf("Directory doesn't exist\n");
-		throw std::bad_exception();
+		//throw std::bad_exception();
+		return "";
 	}
 	while ((pFile = readdir(pDir)) != NULL)
 	{
