@@ -18,8 +18,9 @@ TerrariumController::~TerrariumController()
 void TerrariumController::run()
 {
     _climateController->launchThread();
+    _lightController->launchThread();
     
-    while(_climateController->running()) {
+    while(_climateController->running() && _lightController->running()) {
         int i = 0;
         ++i;
     }

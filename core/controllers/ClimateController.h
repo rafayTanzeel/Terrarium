@@ -65,8 +65,8 @@ private:
     TempHumiditySensor* _tempHumiditySensor;
     WaterSensor* _waterSensor;
     
-    Time _dayTime;
-    Time _nightTime;
+    Time _dayTime = {8, 0, 0};
+    Time _nightTime = {23, 0, 0};
     
     int _dayTemperature;
     int _nightTemperature;

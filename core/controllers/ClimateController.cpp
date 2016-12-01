@@ -56,7 +56,7 @@ void* ClimateController::doClimateControl()
 		
 		
 	    printf("Humidity: %f\n", getHumidity());
-	    printf("Tempareture: %f\n", getTemperature());
+	    printf("Temperature: %f\n", getTemperature());
 	    sleep(1);
 	}
 	
@@ -75,8 +75,6 @@ bool ClimateController::running()
     return runControllerLocal;
 }
 
-// Begin computing primes on a separate thread. Given the pipe 
-// handle into which it should push any primes found.
 void ClimateController::launchThread()
 {	
 	pthread_mutex_lock(&_controllerMutex);
@@ -88,8 +86,6 @@ void ClimateController::launchThread()
 	pthread_create(&_id, NULL, &ClimateController::threadFn, (void*)this);
 }
 
-
-// Stop calculating primes and free all memory.
 void ClimateController::stopThread(void)
 {
 	pthread_mutex_lock(&_controllerMutex);

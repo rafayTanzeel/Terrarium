@@ -2,6 +2,7 @@
 #define LIGHT_CONTROLLER_H
 
 #include "../Types.h"
+#include <pthread.h>
 
 class ColorSensor;
 class LightSensor;
@@ -47,20 +48,31 @@ public:
 	static int luxToFootCandles(int lux);
     static int footCandlesToLux(int footcandles);
 	
+	bool running();
+	void launchThread();
+	void stopThread();
+	
 private:
+    
+    static void* threadFn(void * object);
+    void* doLightControl();
 
     ColorSensor* _colorSensor;
     LightSensor* _lightSensor;
     RGBLightStrip* _rgbLightStrip;
     PWMLightStrip* _pwmLightStrip;
     
-    Time _dayTime;
-    Time _nightTime;
+    Time _dayTime = {8, 0, 0};
+    Time _nightTime = {23, 0, 0};
     
     LightParms _dayColorTemperature;
     LightParms _nightColorTemperature;
     LightParms _dayBrightnessLux;
     LightParms _nightBrightnessLux;
+    
+    pthread_t _id; //ID of processing thread
+    bool _runController = false;
+    pthread_mutex_t _controllerMutex = PTHREAD_MUTEX_INITIALIZER;
     
 };
 

@@ -5,6 +5,8 @@
 #include "../modules/PWMLightStrip.h"
 #include "../modules/RGBLightStrip.h"
 
+#include <unistd.h>
+
 static const double LUX_FOOTCANDLE_FACTOR = 0.09290304;
 
 LightController::LightController(ColorSensor*& colorSensor, LightSensor*& lightSensor, RGBLightStrip*& rgbLightStrip, PWMLightStrip*& pwmLightStrip) : _colorSensor(colorSensor),
@@ -25,6 +27,73 @@ LightController::~LightController()
     delete _rgbLightStrip; _rgbLightStrip = nullptr;
     delete _pwmLightStrip; _pwmLightStrip = nullptr;
 }
+
+
+void* LightController::threadFn(void * object)
+{
+    return ((LightController*)object)->doLightControl(); 
+}
+
+
+void* LightController::doLightControl()
+{
+    bool runControllerLocal = true;
+	while(runControllerLocal) {
+		pthread_mutex_lock(&_controllerMutex);
+		{
+			runControllerLocal = _runController;
+		}
+		pthread_mutex_unlock(&_controllerMutex);
+		if (!runControllerLocal) {
+		    break;
+		}
+		
+		
+	    printf("Lux: %i\n", getBrightnessLux());
+	    printf("Color Temperature: %i\n", getColorTemperature());
+	    sleep(1);
+	}
+	
+	return NULL;
+}
+
+bool LightController::running()
+{
+    bool runControllerLocal;
+	pthread_mutex_lock(&_controllerMutex);
+	{
+		runControllerLocal = _runController;
+	}
+	pthread_mutex_unlock(&_controllerMutex);
+    
+    return runControllerLocal;
+}
+
+void LightController::launchThread()
+{	
+	pthread_mutex_lock(&_controllerMutex);
+	{
+		_runController = true;
+	}
+	pthread_mutex_unlock(&_controllerMutex);
+	
+	pthread_create(&_id, NULL, &LightController::threadFn, (void*)this);
+}
+
+
+void LightController::stopThread(void)
+{
+	pthread_mutex_lock(&_controllerMutex);
+	{
+	    _runController = false;
+	}
+	pthread_mutex_unlock(&_controllerMutex);
+
+	pthread_join(_id, NULL);
+}
+
+
+
 
 //Automatic Control (sets both day and night)
 int LightController::setColorTemperature(int temp, bool useAnalogLEDs)
