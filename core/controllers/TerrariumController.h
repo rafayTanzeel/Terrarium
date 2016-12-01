@@ -13,6 +13,8 @@ public:
 	TerrariumController(ClimateController*& climateController, LightController*& lightController);
 	~TerrariumController();
 	
+	void run();
+	
 	//Automatic Control (sets both day and night)
 	int setColorTemperature(int temp, bool useAnalogLEDs = false);
 	int setBrightnessLux(int lux, bool useAnalogLEDs = false);

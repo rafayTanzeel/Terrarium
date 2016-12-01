@@ -32,6 +32,70 @@ ClimateController::~ClimateController()
     delete _tempHumiditySensor; _tempHumiditySensor = nullptr;
     delete _waterSensor; _waterSensor = nullptr;
 }
+
+void* ClimateController::threadFn(void * object)
+{
+    return ((ClimateController*)object)->doClimateControl(); 
+}
+
+
+void* ClimateController::doClimateControl()
+{
+    bool runControllerLocal = true;
+	while(runControllerLocal) {
+		pthread_mutex_lock(&_controllerMutex);
+		{
+			runControllerLocal = _runController;
+		}
+		pthread_mutex_unlock(&_controllerMutex);
+		if (!runControllerLocal) {
+		    break;
+		}
+		
+	    printf("meow\n");
+	}
+	
+	return NULL;
+}
+
+bool ClimateController::running()
+{
+    bool runControllerLocal;
+	pthread_mutex_lock(&_controllerMutex);
+	{
+		runControllerLocal = _runController;
+	}
+	pthread_mutex_unlock(&_controllerMutex);
+    
+    return runControllerLocal;
+}
+
+// Begin computing primes on a separate thread. Given the pipe 
+// handle into which it should push any primes found.
+void ClimateController::launchThread()
+{	
+	pthread_mutex_lock(&_controllerMutex);
+	{
+		_runController = true;
+	}
+	pthread_mutex_unlock(&_controllerMutex);
+	
+	pthread_create(&_id, NULL, &ClimateController::threadFn, (void*)this);
+}
+
+
+// Stop calculating primes and free all memory.
+void ClimateController::stopThread(void)
+{
+	pthread_mutex_lock(&_controllerMutex);
+	{
+	    _runController = false;
+	}
+	pthread_mutex_unlock(&_controllerMutex);
+
+	pthread_join(_id, NULL);
+}
+
 	
 //Automatic Control (sets both day and night)
 

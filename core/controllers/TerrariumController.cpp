@@ -15,6 +15,16 @@ TerrariumController::~TerrariumController()
     delete _lightController; _lightController = nullptr;
 }
 
+void TerrariumController::run()
+{
+    _climateController->launchThread();
+    
+    while(_climateController->running()) {
+        int i = 0;
+        ++i;
+    }
+}
+
 //Automatic Control (sets both day and night)
 int TerrariumController::setColorTemperature(int temp, bool useAnalogLEDs) 
 {
@@ -219,3 +229,4 @@ int TerrariumController::getRGBColor(int& r, int& g, int& b)
 {
 	return _lightController->getRGBColor(r, g, b);
 }
+

@@ -19,7 +19,8 @@
 _Bool stopping = false;
 
 TerrariumServer _terrariumServer;
-//TerrariumController _terrariumController;
+
+TerrariumController buildTerrariumController();
 
 #endif
 

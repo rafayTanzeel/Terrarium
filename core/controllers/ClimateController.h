@@ -2,6 +2,7 @@
 #define CLIMATE_CONTROLLER_H
 
 #include "../Types.h"
+#include <pthread.h>
 
 class Fan;
 class Relay;
@@ -47,7 +48,14 @@ public:
 	int getCirculationFanStatus();
 	double getWetness();
 	
+	bool running();
+	void launchThread();
+	void stopThread();
+	
 private:
+    
+    static void* threadFn(void * object);
+    void* doClimateControl();
     
     Fan* _exhaustFan;
     Fan* _intakeFan;
@@ -65,6 +73,10 @@ private:
     int _dayHumidity;
     int _nightHumidity;
     int _wetnessThreshold;
+    
+    pthread_t _id; //ID of processing thread
+    bool _runController = false;
+    pthread_mutex_t _controllerMutex = PTHREAD_MUTEX_INITIALIZER;
       
 };
 
