@@ -1,6 +1,6 @@
 #ifndef ANALOG_H
 #define ANALOG_H
-
+/*
 #include <string>
 
 
@@ -41,5 +41,5 @@ private:
 	
 	std::string _enablePath;
 };
-
+*/
 #endif

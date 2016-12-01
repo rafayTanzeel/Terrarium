@@ -9,7 +9,7 @@
 #include <dirent.h>
 #include "Analog.h"
 
-static const char* SLOTS_FILE = "/sys/devices/platform/bone_capemgr/slots";
+/*static const char* SLOTS_FILE = "/sys/devices/platform/bone_capemgr/slots";
 
 static const char* OCP_DIR = "/sys/devices/platform/ocp/";
 static const char* Analog_DIR = "/sys/class/analog/";
@@ -335,5 +335,5 @@ int main()
 	analog50.setPeriod(10000000);
 	analog50.setDutyCycle(5000000);
 	analog50.enable();
-}
+}*/
 

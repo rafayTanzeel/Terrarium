@@ -10,7 +10,7 @@ LINKER = -lpthread -lm
 
 SRC = Terrarium.cpp TerrariumServer.cpp
 OBJS = $(subst .cpp,.o,$(SRC))
-STATIC_LIBS = controllers/controllers.a libraries/libraries.a modules/modules.a
+STATIC_LIBS = controllers/controllers.a libraries/libraries.a modules/modules.a tools/tools.a
 
 all: app
 
@@ -18,6 +18,7 @@ app: $(OBJS)
 	$(MAKE) -C libraries
 	$(MAKE) -C modules
 	$(MAKE) -C controllers
+	$(MAKE) -C tools
 	$(CC_C)$(CXX) $(CXX_FLAGS) -o $(TARGET) $(OBJS) $(STATIC_LIBS) $(LINKER)
 	cp $(TARGET) $(PUBDIR)/$(TARGET)
 

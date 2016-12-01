@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 #include <map>
 #include <unistd.h>
 #include <dirent.h>
@@ -55,49 +56,49 @@ int PWM::initPinFS()
     std::string chipAddress;
     std::string pwmNumber;
     //EHRPWM0A
-    if (headerNumber == "P9_22" || headerNumber == "P9_31") {
+    if ((strcmp(headerNumber, "P9_22") == 0) || (strcmp(headerNumber, "P9_31") == 0)) {
         chipAddress = "48300200.ehrpwm";
         _exportNumber = 0;
         pwmNumber = "pwm0";
         }
     //EHRPWM0B
-    if (headerNumber == "P9_21" || headerNumber == "P9_29") {
+    if ((strcmp(headerNumber, "P9_21") == 0) || (strcmp(headerNumber, "P9_29") == 0)) {
         chipAddress = "48300200.ehrpwm";
         _exportNumber = 1;
         pwmNumber = "pwm1";
         }
     //EHRPWM1A
-    if (headerNumber == "P9_14" || headerNumber == "P8_36") {
+    if ((strcmp(headerNumber, "P9_14") == 0) || (strcmp(headerNumber, "P8_36") == 0)) {
         chipAddress = "48302200.ehrpwm";
         _exportNumber = 0;
         pwmNumber = "pwm0";
         }
     //EHRPWM1B
-    if (headerNumber == "P9_16" || headerNumber == "P8_34") {
+    if ((strcmp(headerNumber, "P9_16") == 0) || (strcmp(headerNumber, "P8_34") == 0)) {
         chipAddress = "48302200.ehrpwm";
         _exportNumber = 1;
         pwmNumber = "pwm1";
         }
     //EHRPWM2A
-    if (headerNumber == "P8_19" || headerNumber == "P8_45") {
+    if ((strcmp(headerNumber, "P8_19") == 0) || (strcmp(headerNumber, "P8_45") == 0)) {
         chipAddress = "48304200.ehrpwm";
         _exportNumber = 0;
         pwmNumber = "pwm0";
         }
     //EHRPWM2B
-    if (headerNumber == "P8_13" || headerNumber == "P8_46") {
+    if ((strcmp(headerNumber, "P8_13") == 0) || (strcmp(headerNumber, "P8_46") == 0)) {
         chipAddress = "48304200.ehrpwm";
         _exportNumber = 1;
         pwmNumber = "pwm1";
                 }
     //ECAPPWM0
-    if (headerNumber == "P9_42") {
+    if (strcmp(headerNumber, "P9_42") == 0) {
         chipAddress = "48300100.ecap";
         _exportNumber = 0;
         pwmNumber = "pwm0";
         }\
     //EHCAPPWM2
-    if (headerNumber == "P9_28") {
+    if (strcmp(headerNumber, "P9_28") == 0) {
         chipAddress = "48300200.ecap";
         _exportNumber = 0;
         pwmNumber = "pwm0";
@@ -116,6 +117,7 @@ int PWM::initPinFS()
     _polarityPath = pinInterfacePath + "polarity";
     _enablePath = pinInterfacePath + "enable";
 
+    return 0;
 }
 
 
@@ -156,7 +158,8 @@ int PWM::loadCape(const char* capeName)
 	return -1;
 	}
 	// Write to data to the file using fprintf():
-	if (strlen(capeName) != fprintf(pfile, "%s", capeName)) {
+	int retVal = fprintf(pfile, "%s", capeName);
+	if (retVal < 0 || strlen(capeName) != static_cast<size_t>(retVal)) {
 		printf("ERROR: Unable to write to cape file.\n");
 	return -2;
 	}
@@ -202,7 +205,6 @@ int PWM::exportPWM()
 		printf("ERROR: Invalid pin number specified\n");
 		return -1;
 	}
-	const char* headerNumber = pinHeaderLookup.at(_pinNumber);
 	
 	char fileName[50];
  	
@@ -322,14 +324,14 @@ int PWM::disable()
 
 int PWM::getDutyCycle()
 {
-
+    return 0;
 
 }
 
 
 int PWM::getPeriod()
 {
-
+    return 0;
 
 
 }
