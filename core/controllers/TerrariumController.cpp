@@ -155,17 +155,17 @@ int TerrariumController::cycleRGBEffects()
 
 
 // Status
-double TerrariumController::getColorTemperature() 
+int TerrariumController::getColorTemperature() 
 {
 	return _lightController->getColorTemperature();
 }
 
-double TerrariumController::getBrightnessLux() 
+int TerrariumController::getBrightnessLux() 
 {
 	return _lightController->getBrightnessLux();
 }
 
-double TerrariumController::getBrightnessFootCandles() 
+int TerrariumController::getBrightnessFootCandles() 
 {
 	return _lightController->getBrightnessFootCandles();
 }

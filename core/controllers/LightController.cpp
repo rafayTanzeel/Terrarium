@@ -5,6 +5,8 @@
 #include "../modules/PWMLightStrip.h"
 #include "../modules/RGBLightStrip.h"
 
+static const double LUX_FOOTCANDLE_FACTOR = 0.09290304;
+
 LightController::LightController(ColorSensor*& colorSensor, LightSensor*& lightSensor, RGBLightStrip*& rgbLightStrip, PWMLightStrip*& pwmLightStrip) : _colorSensor(colorSensor),
                                                                 _lightSensor(lightSensor),
                                                                 _rgbLightStrip(rgbLightStrip),
@@ -104,14 +106,14 @@ int LightController::setNightBrightnessLux(int lux, bool useAnalogLEDs)
 
 int LightController::setDayBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
-    _dayBrightnessLux.light = static_cast<int>(footCandlesToLux(static_cast<float>(footcandles)));
+    _dayBrightnessLux.light = footCandlesToLux(footcandles);
     _dayBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setNightBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
-    _nightBrightnessLux.light = static_cast<int>(footCandlesToLux(static_cast<float>(footcandles)));
+    _nightBrightnessLux.light = footCandlesToLux(footcandles);
     _nightBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
@@ -136,17 +138,17 @@ int LightController::cycleRGBEffects()
 
 // Status
 
-double LightController::getColorTemperature()
+int LightController::getColorTemperature()
 {
     return 0;
 }
 
-double LightController::getBrightnessLux()
+int LightController::getBrightnessLux()
 {
     return 0;
 }
 
-double LightController::getBrightnessFootCandles()
+int LightController::getBrightnessFootCandles()
 {
     return 0;
 }
@@ -161,14 +163,14 @@ int LightController::getRGBColor(int& r, int& g, int& b)
     return 0;
 }
 
-double LightController::luxToFootCandles(double lux)
+int LightController::luxToFootCandles(int lux)
 {
-    return lux * 0.09290304;
+    return static_cast<int>(lux * LUX_FOOTCANDLE_FACTOR);
 }
 
-double LightController::footCandlesToLux(double footcandles)
+int LightController::footCandlesToLux(int footcandles)
 {
-    return footcandles / 0.09290304;
+    return static_cast<int>(footcandles / LUX_FOOTCANDLE_FACTOR);
 }
 
 

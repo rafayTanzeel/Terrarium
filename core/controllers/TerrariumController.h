@@ -46,9 +46,9 @@ public:
 	int cycleRGBEffects();
 
 	// Status
-	double getColorTemperature();
-	double getBrightnessLux();
-	double getBrightnessFootCandles();
+	int getColorTemperature();
+	int getBrightnessLux();
+	int getBrightnessFootCandles();
 	double getHumidity();
 	double getTemperature();
 	int getIntakeFanStatus();

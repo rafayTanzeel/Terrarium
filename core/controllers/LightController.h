@@ -38,14 +38,14 @@ public:
 	int cycleRGBEffects();
 
 	// Status
-	double getColorTemperature();
-	double getBrightnessLux();
-	double getBrightnessFootCandles();
+	int getColorTemperature();
+	int getBrightnessLux();
+	int getBrightnessFootCandles();
 	int getAnalogLEDBrightness();
 	int getRGBColor(int& r, int& g, int& b);
 	
-	static double luxToFootCandles(double lux);
-    static double footCandlesToLux(double footcandles);
+	static int luxToFootCandles(int lux);
+    static int footCandlesToLux(int footcandles);
 	
 private:
 
