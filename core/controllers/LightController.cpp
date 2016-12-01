@@ -191,17 +191,17 @@ int LightController::setNightBrightnessFootcandles(int footcandles, bool useAnal
 
 int LightController::setAnalogLEDBrightness(int brightness)
 {
-    return 0;
+    return _pwmLightStrip->setBrightness(brightness);
 }
 
 int LightController::setRGBColor(int r, int g, int b)
 {
-    return 0;
+    return _rgbLightStrip->setColor(r, g, b);
 }
 
 int LightController::cycleRGBEffects()
 {
-    return 0;
+    return _rgbLightStrip->cycleRGBEffects();
 }
 
 
@@ -209,27 +209,27 @@ int LightController::cycleRGBEffects()
 
 int LightController::getColorTemperature()
 {
-    return 0;
+    return _colorSensor->getColorTemperature();
 }
 
 int LightController::getBrightnessLux()
 {
-    return 0;
+    return _lightSensor->getLux();
 }
 
 int LightController::getBrightnessFootCandles()
 {
-    return 0;
+    return _lightSensor->getFootCandles();
 }
 
 int LightController::getAnalogLEDBrightness()
 {
-    return 0;
+    return _pwmLightStrip->getBrightness();
 }
 
 int LightController::getRGBColor(int& r, int& g, int& b)
 {
-    return 0;
+    return _rgbLightStrip->getColor(r, g, b);
 }
 
 int LightController::luxToFootCandles(int lux)
