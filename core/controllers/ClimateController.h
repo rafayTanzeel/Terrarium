@@ -48,6 +48,11 @@ public:
 	float getWetness();
 	
 private:
+
+    struct Time {
+	    int hours, minutes, seconds;
+	};
+    
     Fan* _exhaustFan;
     Fan* _intakeFan;
     Fan* _circulationFan;
@@ -56,8 +61,8 @@ private:
     TempHumiditySensor* _tempHumiditySensor;
     WaterSensor* _waterSensor;
     
-    time_t _dayTime;
-    time_t _nightTime;
+    Time _dayTime;
+    Time _nightTime;
     
     int _dayTemperature;
     int _nightTemperature;

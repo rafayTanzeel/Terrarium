@@ -59,11 +59,27 @@ int ClimateController::setWetnessAlarmThreshold(int threshold)
 
 int ClimateController::setDayTime(int hours, int minutes, int seconds)
 {
+    if (hours > 23 || minutes > 59 || seconds > 59 || hours < 0 || minutes < 0 || seconds < 0) {
+        return -1;
+    }
+    
+    _dayTime.hours = hours;
+    _dayTime.minutes = minutes;
+    _dayTime.seconds = seconds;
+
     return 0;
 }
 
 int ClimateController::setNightTime(int hours, int minutes, int seconds)
 {
+    if (hours > 23 || minutes > 59 || seconds > 59 || hours < 0 || minutes < 0 || seconds < 0) {
+        return -1;
+    }
+    
+    _nightTime.hours = hours;
+    _nightTime.minutes = minutes;
+    _nightTime.seconds = seconds;    
+    
     return 0;
 }
 
