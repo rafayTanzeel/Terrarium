@@ -1,7 +1,7 @@
 #ifndef CLIMATE_CONTROLLER_H
 #define CLIMATE_CONTROLLER_H
 
-#include <time.h>
+#include "../Types.h"
 
 class Fan;
 class Relay;
@@ -48,10 +48,6 @@ public:
 	float getWetness();
 	
 private:
-
-    struct Time {
-	    int hours, minutes, seconds;
-	};
     
     Fan* _exhaustFan;
     Fan* _intakeFan;
@@ -68,7 +64,6 @@ private:
     int _nightTemperature;
     int _dayHumidity;
     int _nightHumidity;
-    
     int _wetnessThreshold;
       
 };

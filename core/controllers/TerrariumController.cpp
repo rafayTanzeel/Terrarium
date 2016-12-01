@@ -155,17 +155,17 @@ int TerrariumController::cycleRGBEffects()
 
 
 // Status
-int TerrariumController::getColorTemperature() 
+float TerrariumController::getColorTemperature() 
 {
 	return _lightController->getColorTemperature();
 }
 
-int TerrariumController::getBrightnessLux() 
+float TerrariumController::getBrightnessLux() 
 {
 	return _lightController->getBrightnessLux();
 }
 
-int TerrariumController::getBrightnessFootCandles() 
+float TerrariumController::getBrightnessFootCandles() 
 {
 	return _lightController->getBrightnessFootCandles();
 }
@@ -210,7 +210,7 @@ float TerrariumController::getWetness()
 	return _climateController->getWetness();
 }
 
-int TerrariumController::getAnalogLEDBrightness() 
+float TerrariumController::getAnalogLEDBrightness() 
 {
 	return _lightController->getAnalogLEDBrightness();
 }

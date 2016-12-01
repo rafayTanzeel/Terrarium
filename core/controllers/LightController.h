@@ -1,6 +1,8 @@
 #ifndef LIGHT_CONTROLLER_H
 #define LIGHT_CONTROLLER_H
 
+#include "../Types.h"
+
 class ColorSensor;
 class LightSensor;
 class RGBLightStrip;
@@ -36,17 +38,33 @@ public:
 	int cycleRGBEffects();
 
 	// Status
-	int getColorTemperature();
-	int getBrightnessLux();
-	int getBrightnessFootCandles();
-	int getAnalogLEDBrightness();
+	float getColorTemperature();
+	float getBrightnessLux();
+	float getBrightnessFootCandles();
+	float getAnalogLEDBrightness();
 	int getRGBColor(int& r, int& g, int& b);
 	
+	static float luxToFootCandles(float lux);
+    static float footCandlesToLux(float footcandles);
+	
 private:
+
     ColorSensor* _colorSensor;
     LightSensor* _lightSensor;
     RGBLightStrip* _rgbLightStrip;
     PWMLightStrip* _pwmLightStrip;
+    
+    Time _dayTime;
+    Time _nightTime;
+    
+    LightParms _dayColorTemperature;
+    LightParms _nightColorTemperature;
+    LightParms _dayBrightnessLux;
+    LightParms _nightBrightnessLux;
+    
+    //Manual control
+    
+    int _analogBrightness; //0 - 100
 };
 
 #endif

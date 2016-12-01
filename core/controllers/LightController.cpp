@@ -27,16 +27,28 @@ LightController::~LightController()
 //Automatic Control (sets both day and night)
 int LightController::setColorTemperature(int temp, bool useAnalogLEDs)
 {
+    _dayColorTemperature.light = temp;
+    _dayColorTemperature.useAnalogLEDs = useAnalogLEDs;
+    _nightColorTemperature.light = temp;
+    _nightColorTemperature.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setBrightnessLux(int lux, bool useAnalogLEDs)
 {
+    _dayBrightnessLux.light = lux;
+    _dayBrightnessLux.useAnalogLEDs = useAnalogLEDs;
+    _nightBrightnessLux.light = lux;
+    _nightBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
+    _dayBrightnessLux.light = footCandlesToLux(footcandles);
+    _dayBrightnessLux.useAnalogLEDs = useAnalogLEDs;
+    _nightBrightnessLux.light = footCandlesToLux(footcandles);
+    _nightBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
@@ -44,41 +56,69 @@ int LightController::setBrightnessFootcandles(int footcandles, bool useAnalogLED
 
 int LightController::setDayTime(int hours, int minutes, int seconds)
 {
+    if (hours > 23 || minutes > 59 || seconds > 59 || hours < 0 || minutes < 0 || seconds < 0) {
+        return -1;
+    }
+    
+    _dayTime.hours = hours;
+    _dayTime.minutes = minutes;
+    _dayTime.seconds = seconds;
+
     return 0;
 }
 
 int LightController::setNightTime(int hours, int minutes, int seconds)
 {
+    if (hours > 23 || minutes > 59 || seconds > 59 || hours < 0 || minutes < 0 || seconds < 0) {
+        return -1;
+    }
+    
+    _nightTime.hours = hours;
+    _nightTime.minutes = minutes;
+    _nightTime.seconds = seconds;    
+    
     return 0;
 }
 
 int LightController::setDayColorTemperature(int temp, bool useAnalogLEDs)
 {
+    _dayColorTemperature.light = temp;
+    _dayColorTemperature.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setNightColorTemperature(int temp, bool useAnalogLEDs)
 {
+    _nightColorTemperature.light = temp;
+    _nightColorTemperature.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setDayBrightnessLux(int lux, bool useAnalogLEDs)
 {
+    _dayBrightnessLux.light = lux;
+    _dayBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setNightBrightnessLux(int lux, bool useAnalogLEDs)
 {
+    _nightBrightnessLux.light = lux;
+    _nightBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setDayBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
+    _dayBrightnessLux.light = footCandlesToLux(footcandles);
+    _dayBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setNightBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
+    _nightBrightnessLux.light = footCandlesToLux(footcandles);
+    _nightBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
@@ -102,22 +142,22 @@ int LightController::cycleRGBEffects()
 
 // Status
 
-int LightController::getColorTemperature()
+float LightController::getColorTemperature()
 {
     return 0;
 }
 
-int LightController::getBrightnessLux()
+float LightController::getBrightnessLux()
 {
     return 0;
 }
 
-int LightController::getBrightnessFootCandles()
+float LightController::getBrightnessFootCandles()
 {
     return 0;
 }
 
-int LightController::getAnalogLEDBrightness()
+float LightController::getAnalogLEDBrightness()
 {
     return 0;
 }
@@ -126,4 +166,16 @@ int LightController::getRGBColor(int& r, int& g, int& b)
 {
     return 0;
 }
+
+float LightController::luxToFootCandles(float lux)
+{
+    return lux * 0.09290304;
+}
+
+float LightController::footCandlesToLux(float footcandles)
+{
+    return footcandles / 0.09290304;
+}
+
+
 
