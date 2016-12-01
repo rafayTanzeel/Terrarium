@@ -139,17 +139,17 @@ float ClimateController::getHumidity()
 
 int ClimateController::getIntakeFanStatus()
 {
-    return 0;
+    return _intakeFan->getState(on);
 }
 
 int ClimateController::getExhaustFanStatus()
 {
-    return 0;
+    return _exhaustFan->getState(on);
 }
 
 int ClimateController::getCirculationFanStatus()
 {
-    return 0;
+    return _circulationFan->getState(on);
 }
 
 float ClimateController::getWetness()
