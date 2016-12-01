@@ -5,9 +5,11 @@ CC = gcc
 CXX = g++
 
 
-all: Adafruit_TCS34725
+all: Adafruit_TCS34725.o
+	cp $^ ..
+	rm $^
 
-Adafruit_TCS34725:
+Adafruit_TCS34725.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c Adafruit_TCS34725.cpp $(CFLAGS)
 
 TCS34725: TCSTest.cpp Adafruit_TCS34725.cpp ../Wire/Wire.cpp

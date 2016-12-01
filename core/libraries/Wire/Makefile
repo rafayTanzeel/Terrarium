@@ -4,7 +4,9 @@ CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++
 
-all: Wire
+all: Wire.o
+	cp $^ ..
+	rm $^
 
-Wire:
+Wire.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c Wire.cpp

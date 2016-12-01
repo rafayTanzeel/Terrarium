@@ -4,9 +4,11 @@ CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++
 
-all: Adafruit_TSL2591
+all: Adafruit_TSL2591.o
+	cp $^ ..
+	rm $^
 
-Adafruit_TSL2591:
+Adafruit_TSL2591.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c Adafruit_TSL2591.cpp $(CFLAGS)
 
 TSL2591: TSLTest.cpp Adafruit_TSL2591.cpp ../Wire/Wire.cpp

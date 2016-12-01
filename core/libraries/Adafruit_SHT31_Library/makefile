@@ -4,9 +4,11 @@ CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++
 
-all: Adafruit_SHT31
+all: Adafruit_SHT31.o
+	cp $^ ..
+	rm $^
 
-Adafruit_SHT31:
+Adafruit_SHT31.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c Adafruit_SHT31.cpp $(CFLAGS)
 
 SHT31: SHTTest.cpp Adafruit_SHT31.cpp ../Wire/Wire.cpp

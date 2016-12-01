@@ -6,8 +6,10 @@ CXX = g++
 
 SRC = TempHumiditySensor.cpp ColorSensor.cpp Fan.cpp LightSensor.cpp PWMLightStrip.cpp Relay.cpp RGBLightStrip.cpp WaterSensor.cpp
 OBJS = $(subst .cpp,.o,$(SRC))
+LIB = modules.a
 
 all: $(OBJS)
+	ar rcs $(LIB) $^
 
 TempHumiditySensor.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c TempHumiditySensor.cpp

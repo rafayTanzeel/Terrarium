@@ -4,15 +4,18 @@ CC_C = arm-linux-gnueabihf-
 CC = gcc
 CXX = g++
 
-all: ClimateController LightController TerrariumController
+LIB = controllers.a
 
-ClimateController:
+all: ClimateController.o LightController.o TerrariumController.o
+	ar rcs $(LIB) $^
+
+ClimateController.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c ClimateController.cpp
 	
-LightController:
+LightController.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c LightController.cpp
 	
-TerrariumController:
+TerrariumController.o:
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c TerrariumController.cpp
 
 clean: 
