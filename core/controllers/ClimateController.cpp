@@ -63,10 +63,22 @@ void* ClimateController::doClimateControl()
 	    
 	    if (isDayTime()) {
 	        setFoggerStatus(humidity < _dayHumidity);
+	        if (humidity < _dayHumidity) {
+	        printf("Day: Fogger on\n");
+	        }
+	        else {
+	        printf("Day: Fogger off\n");
+	        }
 	        setCoolerStatus(temperature < _dayTemperature);
 	    }
 	    else {
 	    	setFoggerStatus(humidity < _nightHumidity);
+	    	if (humidity < _nightHumidity) {
+	        printf("Night: Fogger on\n");
+	        }
+	        else {
+	        printf("Night: Fogger off\n");
+	        }
 	    	setCoolerStatus(temperature < _nightTemperature);
 	    }
 	    	    
@@ -275,6 +287,10 @@ bool ClimateController::isDayTime() const
     
     int currentTimeSeconds = timeinfo->tm_hour*60*60 + timeinfo->tm_min*60 + timeinfo->tm_sec;
     
+    printf("currentTime: %iH, %iM %iS\n", timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
+    
+    printf("daytime: = %iH, %iM %iS\n", _dayTime.hours, _dayTime.minutes, _dayTime.seconds);
+    printf("nighttime: = %iH, %iM %iS\n", _nightTime.hours, _nightTime.minutes, _nightTime.seconds);
     
     if (currentTimeSeconds > nightTimeSeconds) {
         if (currentTimeSeconds < dayTimeSeconds) { //shouldn't happen because we made sure night > day

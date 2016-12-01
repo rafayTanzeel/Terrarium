@@ -70,10 +70,10 @@ private:
     Time _dayTime = {8, 0, 0};
     Time _nightTime = {22, 0, 0};
     
-    int _dayTemperature;
-    int _nightTemperature;
-    int _dayHumidity;
-    int _nightHumidity;
+    int _dayTemperature = 25;
+    int _nightTemperature = 20;
+    int _dayHumidity = 90;
+    int _nightHumidity = 50;
     int _wetnessThreshold;
     
     pthread_t _id; //ID of processing thread
