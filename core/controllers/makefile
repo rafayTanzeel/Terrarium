@@ -5,6 +5,7 @@ CC = gcc
 CXX = g++
 
 LIB = controllers.a
+STATIC_LIBS = ../libraries/libraries.a ../modules/modules.a ../tools/tools.a
 
 all: ClimateController.o LightController.o TerrariumController.o
 	ar rcs $(LIB) $^

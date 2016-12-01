@@ -11,15 +11,17 @@ LINKER = -lpthread -lm
 SRC = Terrarium.cpp TerrariumServer.cpp
 OBJS = $(subst .cpp,.o,$(SRC))
 STATIC_LIBS = controllers/controllers.a libraries/libraries.a modules/modules.a tools/tools.a
+JOINED_LIB = lib.a
 
 all: app
 
 app: $(OBJS)
+	$(MAKE) -C tools
 	$(MAKE) -C libraries
 	$(MAKE) -C modules
 	$(MAKE) -C controllers
-	$(MAKE) -C tools
-	$(CC_C)$(CXX) $(CXX_FLAGS) -o $(TARGET) $(OBJS) $(STATIC_LIBS) $(LINKER)
+	ar crsT lib.a $(STATIC_LIBS)
+	$(CC_C)$(CXX) $(CXX_FLAGS) -o $(TARGET) $(OBJS) $(JOINED_LIB) $(LINKER)
 	cp $(TARGET) $(PUBDIR)/$(TARGET)
 
 Terrarium.o: Terrarium.cpp TerrariumServer.o
