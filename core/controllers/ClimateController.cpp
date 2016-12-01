@@ -6,6 +6,7 @@
 #include "../modules/WaterSensor.h"
 
 #include <unistd.h>
+#include <time.h>
 
 ClimateController::ClimateController(Fan*& exhaustFan, Fan*& intakeFan, Fan*& circulationFan, Relay*& fogger, Relay*& cooler, TempHumiditySensor*& tempHumiditySensor, WaterSensor*& waterSensor) : _exhaustFan(exhaustFan),
                _intakeFan(intakeFan),
@@ -54,9 +55,21 @@ void* ClimateController::doClimateControl()
 		    break;
 		}
 		
+		double humidity = getHumidity();
+		double temperature = getTemperature();
 		
-	    printf("Humidity: %f\n", getHumidity());
-	    printf("Temperature: %f\n", getTemperature());
+	    printf("Humidity: %f\n", humidity);
+	    printf("Temperature: %f\n", temperature);
+	    
+	    if (isDayTime()) {
+	        setFoggerStatus(humidity < _dayHumidity);
+	        setCoolerStatus(temperature < _dayTemperature);
+	    }
+	    else {
+	    	setFoggerStatus(humidity < _nightHumidity);
+	    	setCoolerStatus(temperature < _nightTemperature);
+	    }
+	    	    
 	    sleep(1);
 	}
 	
@@ -240,4 +253,45 @@ double ClimateController::getWetness()
 {
     return _waterSensor->getWetness();
 }
+
+bool ClimateController::isDayTime() const
+{
+    int dayTimeSeconds = _dayTime.hours*60*60 + _dayTime.minutes*60 + _dayTime.seconds;
+    int nightTimeSeconds = _nightTime.hours*60*60 + _nightTime.minutes*60 + _nightTime.seconds;
+    bool flippedDayTime = false;
+    
+    if (dayTimeSeconds > nightTimeSeconds) {
+        int tempDayTimeSeconds = dayTimeSeconds; 
+        dayTimeSeconds = nightTimeSeconds;
+        nightTimeSeconds = tempDayTimeSeconds;
+        
+        flippedDayTime = true;
+    }
+    
+    time_t rawtime;
+    struct tm * timeinfo;
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    
+    int currentTimeSeconds = timeinfo->tm_hour*60*60 + timeinfo->tm_min*60 + timeinfo->tm_sec;
+    
+    
+    if (currentTimeSeconds > nightTimeSeconds) {
+        if (currentTimeSeconds < dayTimeSeconds) { //shouldn't happen because we made sure night > day
+            return flippedDayTime;
+        }
+        else { //currentTimeSeconds >= dayTimeSeconds
+            return flippedDayTime;
+        }       
+    }
+    else { //currentTimeSeconds <= nightTimeSeconds
+        if (currentTimeSeconds < dayTimeSeconds) {
+            return flippedDayTime;
+        }
+        else { //currentTimeSeconds >= dayTimeSeconds
+            return !flippedDayTime;
+        }
+    }  
+}
+
 

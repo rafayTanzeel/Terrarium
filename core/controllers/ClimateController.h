@@ -57,6 +57,8 @@ private:
     static void* threadFn(void * object);
     void* doClimateControl();
     
+    bool isDayTime() const;
+    
     Fan* _exhaustFan;
     Fan* _intakeFan;
     Fan* _circulationFan;
@@ -66,7 +68,7 @@ private:
     WaterSensor* _waterSensor;
     
     Time _dayTime = {8, 0, 0};
-    Time _nightTime = {23, 0, 0};
+    Time _nightTime = {22, 0, 0};
     
     int _dayTemperature;
     int _nightTemperature;

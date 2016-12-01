@@ -51,12 +51,17 @@ public:
 	bool running();
 	void launchThread();
 	void stopThread();
-	
+
 private:
     
     static void* threadFn(void * object);
     void* doLightControl();
-
+    
+    bool isDayTime() const;
+    bool autoBrightness = true;
+    
+    int doAutoBrightnessLux(int lux, bool useAnalogLEDs);
+	
     ColorSensor* _colorSensor;
     LightSensor* _lightSensor;
     RGBLightStrip* _rgbLightStrip;

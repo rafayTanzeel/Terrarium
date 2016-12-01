@@ -48,11 +48,24 @@ void* LightController::doLightControl()
 		    break;
 		}
 		
-		
-	    printf("Lux: %i\n", getBrightnessLux());
-	    printf("Color Temperature: %i\n", getColorTemperature());
+		int measuredLux = getBrightnessLux();
+	    printf("Lux: %i\n", measuredLux);
+	    
+	    if (isDayTime()) {
+	        if (autoBrightness) {
+	            doAutoBrightnessLux(_dayBrightnessLux.light, _dayBrightnessLux.useAnalogLEDs);
+	        }
+	    }
+	    else {
+	    	if (autoBrightness) {
+	            doAutoBrightnessLux(_nightBrightnessLux.light, _nightBrightnessLux.useAnalogLEDs);
+	        }
+	    }
+	    	    
 	    sleep(1);
 	}
+	
+	return NULL;
 	
 	return NULL;
 }
@@ -242,5 +255,51 @@ int LightController::footCandlesToLux(int footcandles)
     return static_cast<int>(footcandles / LUX_FOOTCANDLE_FACTOR);
 }
 
+bool LightController::isDayTime() const
+{
+    int dayTimeSeconds = _dayTime.hours*60*60 + _dayTime.minutes*60 + _dayTime.seconds;
+    int nightTimeSeconds = _nightTime.hours*60*60 + _nightTime.minutes*60 + _nightTime.seconds;
+    bool flippedDayTime = false;
+    
+    if (dayTimeSeconds > nightTimeSeconds) {
+        int tempDayTimeSeconds = dayTimeSeconds; 
+        dayTimeSeconds = nightTimeSeconds;
+        nightTimeSeconds = tempDayTimeSeconds;
+        
+        flippedDayTime = true;
+    }
+    
+    time_t rawtime;
+    struct tm * timeinfo;
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    
+    int currentTimeSeconds = timeinfo->tm_hour*60*60 + timeinfo->tm_min*60 + timeinfo->tm_sec;
+    
+    
+    if (currentTimeSeconds > nightTimeSeconds) {
+        if (currentTimeSeconds < dayTimeSeconds) { //shouldn't happen because we made sure night > day
+            return flippedDayTime;
+        }
+        else { //currentTimeSeconds >= dayTimeSeconds
+            return flippedDayTime;
+        }       
+    }
+    else { //currentTimeSeconds <= nightTimeSeconds
+        if (currentTimeSeconds < dayTimeSeconds) {
+            return flippedDayTime;
+        }
+        else { //currentTimeSeconds >= dayTimeSeconds
+            return !flippedDayTime;
+        }
+    }  
+}
+
+int LightController::doAutoBrightnessLux(int lux, bool useAnalogLEDs)
+{
+
+    return 0;
+
+}
 
 
