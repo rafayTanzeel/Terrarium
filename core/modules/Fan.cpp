@@ -10,6 +10,7 @@ Fan::Fan(int pinNumber, int maxRPM) : _pwm(pinNumber),
                                       _on(false)
 {
     _pwm.setPeriod(period);
+    setSpeedPercent(_speedPercent);
 }
 
 Fan::~Fan()
@@ -48,8 +49,9 @@ bool Fan::setSpeedRPM(int RPM)
     else if (RPM < 0) {
         RPM = 0;
     }
-    
+    int period = _pwm.getPeriod();
     int dutyCycle = RPM / _maxRPM;
+    dutyCycle = period * dutyCycle;
     _pwm.setDutyCycle(dutyCycle);
     
     setState(RPM <= 0 ? false : true);
@@ -71,7 +73,7 @@ bool Fan::setSpeedPercent(int percent)
         percent = 0;
     }
     int period = _pwm.getPeriod();
-    int dutyCycle = period * percent;
+    int dutyCycle = period * percent/100;
     _pwm.setDutyCycle(dutyCycle);
     return true;
 }
