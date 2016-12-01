@@ -273,7 +273,6 @@ int PWM::setPeriod(int nanoseconds)
 	}
 	fclose(file);
 	return returnValue;
-
 }
 
 int PWM::enable()
@@ -324,16 +323,31 @@ int PWM::disable()
 
 int PWM::getDutyCycle()
 {
-    return 0;
-
+    return getValue(_dutyCyclePath.c_str());
 }
-
 
 int PWM::getPeriod()
 {
-    return 0;
+    return getValue(_periodPath.c_str());
+}
 
+int PWM::getValue(const char *fileName)
+{
+	FILE *file = fopen(fileName, "r");
+	if (NULL == file) {
+		printf("ERROR: Unable to open file (%s) for read\n", fileName);
+		exit(-1);
+	}
 
+	// Read string (line)
+	const int max_length = 32;
+	char buff[max_length];
+	fgets(buff, max_length, file);
+	
+	// Close
+	fclose(file);
+	
+	return atoi(buff);
 }
 
 

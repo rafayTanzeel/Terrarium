@@ -30,6 +30,8 @@ private:
 	int configPinMux();
 	
 	int exportPWM();
+	
+	static int getValue(const char* fileName);
 
 	static bool _capeLoaded;
 
