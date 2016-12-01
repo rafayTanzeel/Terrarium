@@ -1,7 +1,5 @@
 $(function() {
 
-    $('#colorpicker').farbtastic('#color');
-
     $("#colorpicker").on("mousemove", function() {
         var hex=hexToRgb($("#color").val());
         var r=hex.r;
@@ -11,10 +9,22 @@ $(function() {
         $("#Rcolor").val(r).css('background-color',"rgb("+r+",0,0)");
         $("#Gcolor").val(g).css('background-color',"rgb(0,"+g+",0)");
         $("#Bcolor").val(b).css('background-color',"rgb(0,0,"+b+")");
+
+	rgbDataSend(r,g,b);
+
     });
 
         posBtn("#brightpos", "#manualbright");
         negBtn("#brightneg", "#manualbright");
+
+
+	analogToggleCheck("#intakeFan");
+        analogToggleCheck("#exhaustFan");
+        analogToggleCheck("#circulationFan");
+        analogToggleCheck("#fogger");
+        analogToggleCheck("#cooler");
+
+
 }
 );
 

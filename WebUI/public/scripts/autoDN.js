@@ -32,6 +32,14 @@ $(function() {
     posBtn("#nightTempPosbtn", "#nightTemp");
     negBtn("#nightTempNegbtn", "#nightTemp");
 
+    analogToggleCheck("#AnalogWithDBL");
+    analogToggleCheck("#AnalogWithNBL");
+    analogToggleCheck("#AnalogWithDBFC");
+    analogToggleCheck("#AnalogWithNBFC");
+
+    analogToggleCheck("#AnalogWithDCT");
+    analogToggleCheck("#AnalogWithNCT");
+
 
     $('.timepicker').wickedpicker();
 

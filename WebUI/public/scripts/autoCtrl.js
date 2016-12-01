@@ -19,6 +19,10 @@ $(function() {
     posBtn("#wetAlarmThreshPosbtn", "#wetAlarmThresh");
     negBtn("#wetAlarmThreshNegbtn", "#wetAlarmThresh");
 
+    analogToggleCheck("#AnalogWithCBFC");
+    analogToggleCheck("#AnalogWithCBL");
+    analogToggleCheck("#AnalogWithCT");
+
 
 });
 

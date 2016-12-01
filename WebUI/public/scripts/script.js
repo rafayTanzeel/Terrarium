@@ -1,3 +1,5 @@
+var socket = io.connect();
+
 $(function () {
         //Init Main Page
         init();
@@ -22,6 +24,15 @@ $(function () {
         $(window).resize(function () {
             displayNav();
         });
+
+
+	//socket.on('commandReply', function(result) {
+
+	//var array = $('#searchKeywords').val().split(",");
+   //     console.log(result);
+  //  });
+
+
     }
 );
 
@@ -68,6 +79,8 @@ function negBtn(idBtn, inputField){
     $(idBtn).on("click", function(){
         var btnVal=$(inputField).val();
         $(inputField).val(parseInt(btnVal)-5);
+	var res=inputField.substring(1, inputField.length)
+        sendMsgCommand(res+' '+$(inputField).val());
     });
 }
 
@@ -76,5 +89,39 @@ function posBtn(idBtn, inputField){
     $(idBtn).on("click", function(){
         var btnVal=$(inputField).val();
         $(inputField).val(parseInt(btnVal)+5);
+	var res=inputField.substring(1, inputField.length)
+        sendMsgCommand(res+' '+$(inputField).val());
+        
     });
 }
+
+
+function analogToggleCheck(inputField) {
+    $(inputField).on("click", function () {
+            var res = inputField.substring(1, inputField.length)
+            if ($(inputField).is(':checked')) {
+                sendMsgCommand(res + ' checked');
+            }
+            else {
+                sendMsgCommand(res + ' unchecked');
+            }
+        }
+    );
+}
+
+function rgbDataSend(r,g,b){
+	socket.emit('msg', "rgb "+r+','+g+','+b);
+}
+
+
+
+function sendMsgCommand(message) {
+    socket.emit('msg', message);
+};
+
+
+
+
+
+
+

@@ -12,10 +12,11 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" type="text/css">
-    <link rel="stylesheet" href="../bower_components/titatoggle/dist/titatoggle-dist-min.css" type="text/css">
-    <link rel="stylesheet" href="../farbtastic/farbtastic.css" type="text/css">
+    <link rel="stylesheet" href="/bower_components/titatoggle/dist/titatoggle-dist-min.css" type="text/css">
+    <link rel="stylesheet" href="/farbtastic/farbtastic.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../styles/style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/style.css" type="text/css">
+    <script src='/socket.io/socket.io.js' type='text/javascript'></script>
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
@@ -132,21 +133,21 @@
             <section class="col-md-3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Colour Temperature</div>
-                    <div class="panel-body">Colour Temperature:</div>
+                    <div class="panel-body">Colour Temperature: <span id="ctemp"></span></div>
                 </div>
             </section>
 
             <section class="col-md-3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Brightness Foot Colour</div>
-                    <div class="panel-body">Brightness Foot Colour:</div>
+                    <div class="panel-body">Brightness Foot Colour: <span id="fcolor"></span></div>
                 </div>
             </section>
 
             <section class="col-md-3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Brightness Lux</div>
-                    <div class="panel-body">Brightness Lux:</div>
+                    <div class="panel-body">Brightness Lux: <span id="blux"></span></div>
                 </div>
             </section>
 
@@ -154,7 +155,7 @@
             <section class="col-md-3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Analog LED Brightness</div>
-                    <div class="panel-body">Analog LED Brightness:</div>
+                    <div class="panel-body">Analog LED Brightness: <span id="ALedBright"></span></div>
                 </div>
             </section>
         </div>
@@ -200,10 +201,8 @@
 
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" type=text/javascript></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js" type=text/javascript></script>
-
-<script src="../scripts/script.js" type=text/javascript></script>
-<script src="../farbtastic/farbtastic.js" type=text/javascript></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.js" type=text/javascript></script>
+<script src="/scripts/script.js" type=text/javascript></script>
+<script src="/farbtastic/farbtastic.js" type=text/javascript></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js" type=text/javascript></script>
+<script src="/scripts/status_lights.js" type=text/javascript></script>
 </html>

@@ -1,6 +1,11 @@
+var socket = io.connect();
+
 $(function() {
+    
     var chartTemp = MorrisBarCharGen("status_temp", 'Temperature', 26, "#B21516");
     var chartHumidity = MorrisBarCharGen("status_humidity", 'Humidity', 40, "#2196f3");
+    var Humidity=0;
+    var Temperature=0;
 
     var asyncCallback = function (chart, DataName, newData) {
         var ret = [];
@@ -11,11 +16,23 @@ $(function() {
     };
 
     setInterval(function () {
-        asyncCallback(chartTemp, 'Temperature', Math.floor((Math.random() * 100) + 1));
+        asyncCallback(chartTemp, 'Temperature', Humidity);
     }, 300);
     setInterval(function () {
-        asyncCallback(chartHumidity, 'Humidity', Math.floor((Math.random() * 100) + 1));
+        asyncCallback(chartHumidity, 'Humidity', Temperature);
     }, 300);
+	
+	console.log(socket);
+    socket.on('commandReply', function(result) {
+        var array = result.split(',');
+        Humidity=array[3];
+        Temperature=array[4];
+    });
+
+	setInterval(function(){ sendMsgCommand("get status"); }, 1500);
+	
+
+
 });
 
 function MorrisBarCharGen(idVal, xVal, yVal, color) {
