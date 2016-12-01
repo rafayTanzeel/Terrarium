@@ -5,6 +5,8 @@
 #include "../modules/TempHumiditySensor.h"
 #include "../modules/WaterSensor.h"
 
+#include <unistd.h>
+
 ClimateController::ClimateController(Fan*& exhaustFan, Fan*& intakeFan, Fan*& circulationFan, Relay*& fogger, Relay*& cooler, TempHumiditySensor*& tempHumiditySensor, WaterSensor*& waterSensor) : _exhaustFan(exhaustFan),
                _intakeFan(intakeFan),
                _circulationFan(circulationFan),
@@ -52,7 +54,10 @@ void* ClimateController::doClimateControl()
 		    break;
 		}
 		
-	    printf("meow\n");
+		
+	    printf("Humidity: %f\n", getHumidity());
+	    printf("Tempareture: %f\n", getTemperature());
+	    sleep(1);
 	}
 	
 	return NULL;

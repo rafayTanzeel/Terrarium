@@ -45,7 +45,7 @@ int main() {
 TerrariumController buildTerrariumController()
 {
     Fan* exhaustFan = new Fan(50, 4200);
-    Fan* intakeFan = new Fan(50, 4200);
+    Fan* intakeFan = new Fan(51, 4200);
     Fan* circulationFan = new Fan(3, 1400);
     
     Relay* fogger = new Relay(117, false);
