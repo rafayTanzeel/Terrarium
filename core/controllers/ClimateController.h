@@ -38,14 +38,14 @@ public:
 	int setFoggerStatus(bool on);
 	
 	// Status
-	float getTemperature();
+	double getTemperature();
 	bool getCoolerStatus();
 	bool getFoggerStatus();
-	float getHumidity();
+	double getHumidity();
 	int getIntakeFanStatus();
 	int getExhaustFanStatus();
 	int getCirculationFanStatus();
-	float getWetness();
+	double getWetness();
 	
 private:
     

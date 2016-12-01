@@ -38,14 +38,14 @@ public:
 	int cycleRGBEffects();
 
 	// Status
-	float getColorTemperature();
-	float getBrightnessLux();
-	float getBrightnessFootCandles();
-	float getAnalogLEDBrightness();
+	double getColorTemperature();
+	double getBrightnessLux();
+	double getBrightnessFootCandles();
+	int getAnalogLEDBrightness();
 	int getRGBColor(int& r, int& g, int& b);
 	
-	static float luxToFootCandles(float lux);
-    static float footCandlesToLux(float footcandles);
+	static double luxToFootCandles(double lux);
+    static double footCandlesToLux(double footcandles);
 	
 private:
 
@@ -62,9 +62,6 @@ private:
     LightParms _dayBrightnessLux;
     LightParms _nightBrightnessLux;
     
-    //Manual control
-    
-    int _analogBrightness; //0 - 100
 };
 
 #endif

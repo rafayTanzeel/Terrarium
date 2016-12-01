@@ -11,11 +11,11 @@ public:
 	WaterSensor(int pinNumber);
 	~WaterSensor();
 	
-	float getWetness();
+	double getWetness();
 		
 private:
 
-	int _wetness;
+	double _wetness;
 
 };
 

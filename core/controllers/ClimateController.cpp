@@ -37,15 +37,15 @@ ClimateController::~ClimateController()
 
 int ClimateController::setTemperature(int temperature) //celsius
 { 
-    _dayTemperature = temperature;
-    _nightTemperature = temperature;
+    setDayTemperature(temperature);
+    setNightTemperature(temperature);
     return 0;
 } 
 
 int ClimateController::setHumidity(int humidity)
 {
-    _dayHumidity = humidity;
-    _nightHumidity = humidity;
+    setDayHumidity(humidity);
+    setNightHumidity(humidity);
     return 0;
 }
 
@@ -136,7 +136,7 @@ int ClimateController::setFoggerStatus(bool on)
 	
 // Status
 
-float ClimateController::getTemperature()
+double ClimateController::getTemperature()
 {
     return _tempHumiditySensor->getTemperature();
 }
@@ -151,7 +151,7 @@ bool ClimateController::getFoggerStatus()
     return _fogger->getState();
 }
 
-float ClimateController::getHumidity()
+double ClimateController::getHumidity()
 {
     return _tempHumiditySensor->getHumidity();
 }
@@ -171,7 +171,7 @@ int ClimateController::getCirculationFanStatus()
     return _circulationFan->getState();
 }
 
-float ClimateController::getWetness()
+double ClimateController::getWetness()
 {
     return _waterSensor->getWetness();
 }

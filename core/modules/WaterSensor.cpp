@@ -6,7 +6,7 @@ WaterSensor::WaterSensor(int pinNumber)
 {
 }
 
-float WaterSensor::getWetness()
+double WaterSensor::getWetness()
 {
     return 0.0;
 }

@@ -11,8 +11,8 @@ public:
 	TempHumiditySensor(const char * filename, uint8_t addr);
 	~TempHumiditySensor();
 	
-	float getHumidity();
-	float getTemperature();
+	double getHumidity();
+	double getTemperature();
 	bool runHeater(int milliseconds);	
 
 private:

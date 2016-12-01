@@ -14,12 +14,12 @@ TempHumiditySensor::~TempHumiditySensor()
 	
 }
 
-float TempHumiditySensor::getHumidity() 
+double TempHumiditySensor::getHumidity() 
 {
 	return _sht31.readHumidity();
 }
 
-float TempHumiditySensor::getTemperature() 
+double TempHumiditySensor::getTemperature() 
 {
 	return _sht31.readTemperature();
 }

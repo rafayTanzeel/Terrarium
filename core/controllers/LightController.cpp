@@ -27,28 +27,22 @@ LightController::~LightController()
 //Automatic Control (sets both day and night)
 int LightController::setColorTemperature(int temp, bool useAnalogLEDs)
 {
-    _dayColorTemperature.light = temp;
-    _dayColorTemperature.useAnalogLEDs = useAnalogLEDs;
-    _nightColorTemperature.light = temp;
-    _nightColorTemperature.useAnalogLEDs = useAnalogLEDs;
+    setDayColorTemperature(temp, useAnalogLEDs);
+    setNightColorTemperature(temp, useAnalogLEDs);
     return 0;
 }
 
 int LightController::setBrightnessLux(int lux, bool useAnalogLEDs)
 {
-    _dayBrightnessLux.light = lux;
-    _dayBrightnessLux.useAnalogLEDs = useAnalogLEDs;
-    _nightBrightnessLux.light = lux;
-    _nightBrightnessLux.useAnalogLEDs = useAnalogLEDs;
+    setDayBrightnessLux(lux, useAnalogLEDs);
+    setNightBrightnessLux(lux, useAnalogLEDs);
     return 0;
 }
 
 int LightController::setBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
-    _dayBrightnessLux.light = footCandlesToLux(footcandles);
-    _dayBrightnessLux.useAnalogLEDs = useAnalogLEDs;
-    _nightBrightnessLux.light = footCandlesToLux(footcandles);
-    _nightBrightnessLux.useAnalogLEDs = useAnalogLEDs;
+    setDayBrightnessFootcandles(footcandles, useAnalogLEDs);
+    setNightBrightnessFootcandles(footcandles, useAnalogLEDs);
     return 0;
 }
 
@@ -110,14 +104,14 @@ int LightController::setNightBrightnessLux(int lux, bool useAnalogLEDs)
 
 int LightController::setDayBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
-    _dayBrightnessLux.light = footCandlesToLux(footcandles);
+    _dayBrightnessLux.light = static_cast<int>(footCandlesToLux(static_cast<float>(footcandles)));
     _dayBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
 
 int LightController::setNightBrightnessFootcandles(int footcandles, bool useAnalogLEDs)
 {
-    _nightBrightnessLux.light = footCandlesToLux(footcandles);
+    _nightBrightnessLux.light = static_cast<int>(footCandlesToLux(static_cast<float>(footcandles)));
     _nightBrightnessLux.useAnalogLEDs = useAnalogLEDs;
     return 0;
 }
@@ -142,22 +136,22 @@ int LightController::cycleRGBEffects()
 
 // Status
 
-float LightController::getColorTemperature()
+double LightController::getColorTemperature()
 {
     return 0;
 }
 
-float LightController::getBrightnessLux()
+double LightController::getBrightnessLux()
 {
     return 0;
 }
 
-float LightController::getBrightnessFootCandles()
+double LightController::getBrightnessFootCandles()
 {
     return 0;
 }
 
-float LightController::getAnalogLEDBrightness()
+int LightController::getAnalogLEDBrightness()
 {
     return 0;
 }
@@ -167,12 +161,12 @@ int LightController::getRGBColor(int& r, int& g, int& b)
     return 0;
 }
 
-float LightController::luxToFootCandles(float lux)
+double LightController::luxToFootCandles(double lux)
 {
     return lux * 0.09290304;
 }
 
-float LightController::footCandlesToLux(float footcandles)
+double LightController::footCandlesToLux(double footcandles)
 {
     return footcandles / 0.09290304;
 }

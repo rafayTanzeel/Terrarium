@@ -46,18 +46,18 @@ public:
 	int cycleRGBEffects();
 
 	// Status
-	float getColorTemperature();
-	float getBrightnessLux();
-	float getBrightnessFootCandles();
-	float getHumidity();
-	float getTemperature();
+	double getColorTemperature();
+	double getBrightnessLux();
+	double getBrightnessFootCandles();
+	double getHumidity();
+	double getTemperature();
 	int getIntakeFanStatus();
 	int getExhaustFanStatus();
 	int getCirculationFanStatus();
 	bool getFoggerStatus();
 	bool getCoolerStatus();
-	float getWetness();
-	float getAnalogLEDBrightness();
+	double getWetness();
+	int getAnalogLEDBrightness();
 	int getRGBColor(int& r, int& g, int& b);
 	
 private:
