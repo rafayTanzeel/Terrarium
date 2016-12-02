@@ -42,36 +42,22 @@ void TerrariumServer::returnPacket(char* message)
 
 	// Status
 	if(str.compare(0, 10, "get status") == 0) {
+		int r,b,g;
+		_terrariumController->getRGBColor(r, b, g);
 		sprintf(message, "%d, %d, %d, %f, %f, %d, %d, %d, %d, %d, %f, %d, %d, %d, %d",
-		 1,
-		 2,
-		 3,
-		 4.0,
-		 5.0,
-		 6,
-		 7,
-		 8,
-		 9,
-		 10,
-		 11.0,
-		 12,
-		 13, 14, 15);
-
-//		 int r,b,g;
-//		sprintf(message, "%d, %d, %d, %f, %f, %d, %d, %d, %d, %d, %f, %d, %d, %d, %d",
-//		  _terrariumController->getColorTemperature(),
-//		  _terrariumController->getBrightnessLux(),
-//		  _terrariumController->getBrightnessFootCandles(),
-//		  _terrariumController->getHumidity(),
-//		  _terrariumController->getTemperature(),
-//		  _terrariumController->getIntakeFanStatus(),
-//		  _terrariumController->getExhaustFanStatus(),
-//		  _terrariumController->getCirculationFanStatus(),
-//		  _terrariumController->getFoggerStatus(),
-//		  _terrariumController->getCoolerStatus(),
-//		  _terrariumController->getWetness(),
-//		  _terrariumController->getAnalogLEDBrightness(),
-//		  _terrariumController->getRGBColor(&r, &b, &g));
+		  _terrariumController->getColorTemperature(),
+		  _terrariumController->getBrightnessLux(),
+		  _terrariumController->getBrightnessFootCandles(),
+		  _terrariumController->getHumidity(),
+		  _terrariumController->getTemperature(),
+		  _terrariumController->getIntakeFanStatus(),
+		  _terrariumController->getExhaustFanStatus(),
+		  _terrariumController->getCirculationFanStatus(),
+		  _terrariumController->getFoggerStatus(),
+		  _terrariumController->getCoolerStatus(),
+		  _terrariumController->getWetness(),
+		  _terrariumController->getAnalogLEDBrightness(),
+		  r, b, g);
 	}
 
 	// Manual
