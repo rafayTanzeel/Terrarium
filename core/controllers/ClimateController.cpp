@@ -61,6 +61,7 @@ void* ClimateController::doClimateControl()
 	    printf("Humidity: %f\n", humidity);
 	    printf("Temperature: %f\n", temperature);
 	    
+	    if (autoClimate) {
 	    if (isDayTime()) {      
 	        if (humidity < _dayHumidity) {
 	            setFoggerStatus(true);
@@ -87,6 +88,8 @@ void* ClimateController::doClimateControl()
 	        printf("Night: Fogger off\n");
 	        }
 	    	//setCoolerStatus(temperature < _nightTemperature);
+	    }
+	    autoClimate = true;
 	    }
 	    	    
 	    sleep(1);
@@ -134,6 +137,7 @@ void ClimateController::stopThread(void)
 
 int ClimateController::setTemperature(int temperature) //celsius
 { 
+    autoClimate = true;
     setDayTemperature(temperature);
     setNightTemperature(temperature);
     return 0;
@@ -141,6 +145,7 @@ int ClimateController::setTemperature(int temperature) //celsius
 
 int ClimateController::setHumidity(int humidity)
 {
+    autoClimate = true;
     setDayHumidity(humidity);
     setNightHumidity(humidity);
     return 0;
@@ -156,6 +161,7 @@ int ClimateController::setWetnessAlarmThreshold(int threshold)
 
 int ClimateController::setDayTime(int hours, int minutes, int seconds)
 {
+    autoClimate = true;
     if (hours > 23 || minutes > 59 || seconds > 59 || hours < 0 || minutes < 0 || seconds < 0) {
         return -1;
     }
@@ -169,6 +175,7 @@ int ClimateController::setDayTime(int hours, int minutes, int seconds)
 
 int ClimateController::setNightTime(int hours, int minutes, int seconds)
 {
+    autoClimate = true;
     if (hours > 23 || minutes > 59 || seconds > 59 || hours < 0 || minutes < 0 || seconds < 0) {
         return -1;
     }
@@ -182,24 +189,28 @@ int ClimateController::setNightTime(int hours, int minutes, int seconds)
 
 int ClimateController::setDayTemperature(int temperature) //celsius
 {
+    autoClimate = true;
     _dayTemperature = temperature;
     return 0;
 }
 
 int ClimateController::setNightTemperature(int temperature) //celsius
 {
+    autoClimate = true;
     _nightTemperature = temperature;
     return 0;
 }
 
 int ClimateController::setDayHumidity(int humidity)
 {
+    autoClimate = true;
     _dayHumidity = humidity;
     return 0;
 }
 
 int ClimateController::setNightHumidity(int humidity)
 {
+    autoClimate = true;
     _nightHumidity = humidity;
     return 0;
 }
@@ -208,26 +219,31 @@ int ClimateController::setNightHumidity(int humidity)
 
 int ClimateController::setCoolerStatus(bool on)
 {
+    autoClimate = false;
     return _cooler->setState(on);
 }
 
 int ClimateController::setIntakeFanStatus(bool on)
 {
+    autoClimate = false;
     return _intakeFan->setState(on);
 }
 
 int ClimateController::setExhaustFanStatus(bool on)
 {
+    autoClimate = false;
     return _exhaustFan->setState(on);
 }
 
 int ClimateController::setCirculationFanStatus(bool on)
 {
+    autoClimate = false;
     return _circulationFan->setState(on);
 }
 
 int ClimateController::setFoggerStatus(bool on)
 {
+    autoClimate = false;
     return _fogger->setState(on);
 }
 	

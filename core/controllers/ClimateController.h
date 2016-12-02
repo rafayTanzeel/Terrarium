@@ -59,6 +59,8 @@ private:
     
     bool isDayTime() const;
     
+    bool autoClimate = true;
+    
     Fan* _exhaustFan;
     Fan* _intakeFan;
     Fan* _circulationFan;
@@ -68,7 +70,7 @@ private:
     WaterSensor* _waterSensor;
     
     Time _dayTime = {8, 0, 0};
-    Time _nightTime = {22, 0, 0};
+    Time _nightTime = {4, 0, 0};
     
     int _dayTemperature = 25;
     int _nightTemperature = 20;
