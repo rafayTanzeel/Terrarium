@@ -1,6 +1,6 @@
 $(function() {
 
-    $(".marker").on("mousemove", function() {
+    $(".marker").on("mouseup", function() {
         var hex=hexToRgb($("#color").val());
         var r=hex.r;
         var g=hex.g;
