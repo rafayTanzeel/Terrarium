@@ -16,9 +16,9 @@ $(function() {
         brightLux=array[1];
         brightFC=array[2];
         AnalogLedBright=array[11];
-        r=parseInt(array[11]);
-        g=parseInt(array[12]);
-        b=parseInt(array[13]);
+        r=parseInt(array[12]);
+        g=parseInt(array[13]);
+        b=parseInt(array[14]);
 
         $("#ctemp").text(colorTemp);
         $("#fcolor").text(brightFC);
