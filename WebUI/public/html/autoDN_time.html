@@ -189,17 +189,23 @@
     $("input[name='verticalUp']").TouchSpin({
         verticalbuttons: true,
         min: 0,
-        max: 11,
+        max: 23,
         initval: 0
     });
 
+    var nHr=$("#nHr").val();
+    var nMin=$("#nMin").val();
+    var nSec=$("#nSec").val();
+
+
     $(".btn").on("click", function () {
-        var nMsg=$("#nHr").val() + ":" + $("#nMin").val() + ":" + $("#nSec").val();
-        var dMsg=$("#dHr").val() + ":" + $("#dMin").val() + ":" + $("#dSec").val();
-
-        sendMsgCommand("NightTime: "+nMsg);
-        sendMsgCommand("DayTime: "+dMsg);
-
+        if($("#nHr").val()!=nHr || $("#nMin").val()!=nMin || $("#nSec").val()!=nSec){
+            var result=$("#nHr").val() + ":" + $("#nMin").val() + ":" + $("#nSec").val();
+            sendMsgCommand("NightTime: "+result);
+        }else{
+            var result=$("#dHr").val() + ":" + $("#dMin").val() + ":" + $("#dSec").val();
+            sendMsgCommand("DayTime: "+result);
+        }
     });
 
 </script>
