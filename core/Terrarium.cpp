@@ -29,7 +29,7 @@ int main() {
 	pthread_create(&tid[0], &attr, TerrariumServer::listener, (void*)&terrariumController); 	// Server Thread
 
 	// Run Terrarium controller
-//	terrariumController.run();
+	terrariumController.run();
 
 	// Wait for threads to finish
 	for(int i = 0; i < NUM_THREADS; i++) {
