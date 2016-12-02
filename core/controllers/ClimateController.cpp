@@ -61,26 +61,22 @@ void* ClimateController::doClimateControl()
 	    printf("Humidity: %f\n", humidity);
 	    printf("Temperature: %f\n", temperature);
 	    
-	    if (isDayTime()) {
-	        setFoggerStatus(humidity < _dayHumidity);
+	    if (isDayTime()) {      
 	        if (humidity < _dayHumidity) {
+	            setFoggerStatus(true);
 	            printf("Day: Fogger on\n");
 	            setIntakeFanStatus(false);
 	            setExhaustFanStatus(false);
 	        }
 	        else {
-	            if (humidity - _dayHumidity > 5) {
-	                setIntakeFanStatus(true);
-	                setExhaustFanStatus(true);
-	                printf("Day: Exhaust/Intake Fans on\n");
-	            }
-	            else {
-	            	setIntakeFanStatus(false);
-	                setExhaustFanStatus(false);
-	            }
+	            setFoggerStatus(false);
 	            printf("Day: Fogger off\n");
+	            printf("Day: Exhaust/Intake Fans on\n");
+	            setIntakeFanStatus(true);
+	            setExhaustFanStatus(true);
+	           
 	        }
-	        setCoolerStatus(temperature < _dayTemperature);
+	        //setCoolerStatus(temperature < _dayTemperature);
 	    }
 	    else {
 	    	setFoggerStatus(humidity < _nightHumidity);
@@ -90,7 +86,7 @@ void* ClimateController::doClimateControl()
 	        else {
 	        printf("Night: Fogger off\n");
 	        }
-	    	setCoolerStatus(temperature < _nightTemperature);
+	    	//setCoolerStatus(temperature < _nightTemperature);
 	    }
 	    	    
 	    sleep(1);

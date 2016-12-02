@@ -48,8 +48,8 @@ TerrariumController buildTerrariumController()
     Fan* intakeFan = new Fan(51, 4200);
     Fan* circulationFan = new Fan(3, 1400);
     
-    Relay* fogger = new Relay(117, false);
-    Relay* cooler = new Relay(115, false);
+    Relay* fogger = new Relay(115, false);
+    Relay* cooler = new Relay(117, false);
     TempHumiditySensor* tempHumiditySensor = new TempHumiditySensor(I2C_BUS_2, SHT31_DEFAULT_ADDR);
     WaterSensor* waterSensor = new WaterSensor(0);
     
