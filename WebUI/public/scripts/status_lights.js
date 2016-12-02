@@ -15,10 +15,10 @@ $(function() {
         colorTemp=array[0];
         brightLux=array[1];
         brightFC=array[2];
-        AnalogLedBright=array[11];
-        r=parseInt(array[12]);
-        g=parseInt(array[13]);
-        b=parseInt(array[14]);
+        AnalogLedBright=array[3];
+        r=parseInt(array[4]);
+        g=parseInt(array[5]);
+        b=parseInt(array[6]);
 
         $("#ctemp").text(colorTemp);
         $("#fcolor").text(brightFC);

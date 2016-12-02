@@ -11,11 +11,11 @@ $(function() {
 
     socket.on('commandReply', function(result) {
         var array = result.split(',');
-        exhaustFan=array[6];
-        intakeFan=array[5];
-        fogger=array[8];
-        cooler=array[9];
-        wetness=array[10];
+        exhaustFan=array[0];
+        intakeFan=array[1];
+        fogger=array[2];
+        cooler=array[3];
+        wetness=array[4];
 
 
         $("#intake").text(intakeFan);
