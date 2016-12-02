@@ -37,5 +37,6 @@ server:
 clean: 
 	rm -f *o $(PUBDIR)/$(TARGET)
 	rm -f *o $(TARGET)
+	rm -rf $(PUBDIR)/terrarium-server-copy
 	find . -type f -name '*.o' -delete
 	find . -type f -name '*.a' -delete
