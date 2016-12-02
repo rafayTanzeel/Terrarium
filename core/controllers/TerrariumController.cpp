@@ -61,8 +61,8 @@ int TerrariumController::setWetnessAlarmThreshold(int threshold)
 //Automatic w/ day/night cycle
 int TerrariumController::setDayTime(int hours, int minutes, int seconds) 
 {
-	return (_lightController->setNightTime(hours, minutes, seconds) ||   // if this short-circuits we already did something wrong
-            _climateController->setNightTime(hours, minutes, seconds));
+	return (_lightController->setDayTime(hours, minutes, seconds) ||   // if this short-circuits we already did something wrong
+            _climateController->setDayTime(hours, minutes, seconds));
 }
 
 int TerrariumController::setNightTime(int hours, int minutes, int seconds) 

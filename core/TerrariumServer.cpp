@@ -47,13 +47,13 @@ void TerrariumServer::returnPacket(char* message)
 		  _terrariumController->getTemperature());
 	}
 	else if(str.compare(0, 13, "get_hw_status") == 0) {
-		sprintf(message, "%d, %d, %d, %d, %f",
+		sprintf(message, "%d, %d, %d, %d, %f, %d",
 				  _terrariumController->getIntakeFanStatus(),
 				  _terrariumController->getExhaustFanStatus(),
-//				  _terrariumController->getCirculationFanStatus(),
 				  _terrariumController->getFoggerStatus(),
 				  _terrariumController->getCoolerStatus(),
-				  _terrariumController->getWetness());
+				  _terrariumController->getWetness(),
+				  _terrariumController->getCirculationFanStatus());
 	}
 	else if(str.compare(0, 16, "get_light_status") == 0) {
 		int r,b,g;
