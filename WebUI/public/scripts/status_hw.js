@@ -16,17 +16,17 @@ $(function() {
         fogger=array[2];
         cooler=array[3];
         wetness=array[4];
+        circlulationFan=array[5];
 
 
         $("#intake").text(intakeFan);
         $("#exhaust").text(exhaustFan);
         $("#wet").text(wetness);
+		$("#circlulationFan").text(circlulationFan);
 
         if(parseInt(fogger)==1) {
-		console.log(parseInt(fogger));
             $("#foggerStat").attr('checked', 'checked');
         }else if(parseInt(fogger)==0){
-		
             $("#foggerStat").removeAttr('checked');
         }
 	
