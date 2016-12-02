@@ -41,7 +41,7 @@ void TerrariumServer::returnPacket(char* message)
 	string str(message);
 
 	// Status
-	if(str.compare(0,10,"get status") == 0) {
+	if(str.compare(0, 10, "get status") == 0) {
 		sprintf(message, "%d, %d, %d, %f, %f, %d, %d, %d, %d, %d, %f, %d, %d, %d, %d",
 		 1,
 		 2,
@@ -140,6 +140,30 @@ void TerrariumServer::returnPacket(char* message)
 		int val = stoi(str);
 		_terrariumController->setWetnessAlarmThreshold(val);
 	}
+	else if(str.compare(0, 9, "colorTemp") == 0) {
+		str.erase(0, 9);
+		vector<string> result = split(str, ',');
+
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setColorTemperature(val, flag);
+	}
+	else if(str.compare(0, 14, "colorBrightLux") == 0) {
+		str.erase(0, 14);
+		vector<string> result = split(str, ',');
+
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setBrightnessLux(val, flag);
+	}
+	else if(str.compare(0, 22, "colorBrightFootcandles") == 0) {
+		str.erase(0, 22);
+		vector<string> result = split(str, ',');
+
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setBrightnessFootcandles(val, flag);
+	}
 
 	// Auto D/N Ctrl
 	else if(str.compare(0, 10, "NightTime:") == 0) {
@@ -147,8 +171,8 @@ void TerrariumServer::returnPacket(char* message)
 		vector<string> result = split(str, ':');
 
 		int h = stoi(result.at(0));
-		int m = stoi(result.at(0));
-		int s = stoi(result.at(0));
+		int m = stoi(result.at(1));
+		int s = stoi(result.at(2));
 		_terrariumController->setNightTime(h, m, s);
 	}
 	else if(str.compare(0, 8, "DayTime:") == 0) {
@@ -156,45 +180,81 @@ void TerrariumServer::returnPacket(char* message)
 		vector<string> result = split(str, ':');
 
 		int h = stoi(result.at(0));
-		int m = stoi(result.at(0));
-		int s = stoi(result.at(0));
+		int m = stoi(result.at(1));
+		int s = stoi(result.at(2));
 		_terrariumController->setDayTime(h, m, s);
 	}
 	else if(str.compare(0, 12, "dayBrightLux") == 0) {
 		str.erase(0, 12);
+		vector<string> result = split(str, ',');
 
-		int val = stoi(str);
-		_terrariumController->setDayBrightnessLux(val);
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setDayBrightnessLux(val, flag);
 	}
 	else if(str.compare(0, 14, "nightBrightLux") == 0) {
 		str.erase(0, 14);
+		vector<string> result = split(str, ',');
 
-		int val = stoi(str);
-		_terrariumController->setNightBrightnessLux(val);
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setNightBrightnessLux(val, flag);
 	}
 	else if(str.compare(0, 11, "dayBrightFC") == 0) {
 		str.erase(0, 11);
+		vector<string> result = split(str, ',');
 
-		int val = stoi(str);
-		_terrariumController->setDayBrightnessFootcandles(val);
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setDayBrightnessFootcandles(val, flag);
 	}
 	else if(str.compare(0, 13, "nightBrightFC") == 0) {
 		str.erase(0, 13);
+		vector<string> result = split(str, ',');
 
-		int val = stoi(str);
-		_terrariumController->setNightBrightnessFootcandles(val);
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setNightBrightnessFootcandles(val, flag);
 	}
 	else if(str.compare(0, 10, "DayhumidIn") == 0) {
-			str.erase(0, 10);
+		str.erase(0, 10);
 
-			int val = stoi(str);
-			_terrariumController->setDayHumidity(val);
-		}
+		int val = stoi(str);
+		_terrariumController->setDayHumidity(val);
+	}
 	else if(str.compare(0, 12, "NighthumidIn") == 0) {
 		str.erase(0, 12);
 
 		int val = stoi(str);
 		_terrariumController->setNightHumidity(val);
+	}
+	else if(str.compare(0, 12, "dayColorTemp") == 0) {
+		str.erase(0, 12);
+		vector<string> result = split(str, ',');
+
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setDayColorTemperature(val, flag);
+	}
+	else if(str.compare(0, 14, "nightColorTemp") == 0) {
+		str.erase(0, 14);
+		vector<string> result = split(str, ',');
+
+		int val = stoi(result.at(0));
+		int flag = stoi(result.at(1));
+		_terrariumController->setNightColorTemperature(val, flag);
+	}
+	else if(str.compare(0, 7, "dayTemp") == 0) {
+		str.erase(0, 7);
+
+		int val = stoi(str);
+		_terrariumController->setDayTemperature(val);
+	}
+	else if(str.compare(0, 9, "nightTemp") == 0) {
+		str.erase(0, 9);
+
+		int val = stoi(str);
+		_terrariumController->setNightTemperature(val);
 	}
 }
 
