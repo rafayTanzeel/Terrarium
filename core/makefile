@@ -34,9 +34,11 @@ server:
 	mkdir -p $(PUBDIR)/terrarium-server-copy
 	cp -R ../WebUI/* $(PUBDIR)/terrarium-server-copy
 
+server_clean:
+	rm -rf $(PUBDIR)/terrarium-server-copy
+
 clean: 
 	rm -f *o $(PUBDIR)/$(TARGET)
 	rm -f *o $(TARGET)
-	rm -rf $(PUBDIR)/terrarium-server-copy
 	find . -type f -name '*.o' -delete
 	find . -type f -name '*.a' -delete
