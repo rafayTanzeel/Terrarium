@@ -222,7 +222,8 @@ int LightController::cycleRGBEffects()
 
 int LightController::getColorTemperature()
 {
-    return _colorSensor->getColorTemperature();
+    return 0;
+    //return _colorSensor->getColorTemperature();
 }
 
 int LightController::getBrightnessLux()
