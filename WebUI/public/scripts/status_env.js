@@ -2,8 +2,8 @@ var socket = io.connect();
 
 $(function() {
 
-    var chartTemp = MorrisBarCharGen("status_temp", 'Temperature', 26, "#B21516");
-    var chartHumidity = MorrisBarCharGen("status_humidity", 'Humidity', 40, "#2196f3");
+    var chartTemp = MorrisBarCharGen("status_temp", 'Temperature', 0, "#B21516");
+    var chartHumidity = MorrisBarCharGen("status_humidity", 'Humidity', 0, "#2196f3");
     var Humidity=0;
     var Temperature=0;
 
@@ -16,11 +16,11 @@ $(function() {
     };
 
     setInterval(function () {
-        asyncCallback(chartTemp, 'Temperature', Humidity);
-    }, 6000);
+        asyncCallback(chartTemp, 'Temperature', Temperature);
+    }, 4000);
     setInterval(function () {
-        asyncCallback(chartHumidity, 'Humidity', Temperature);
-    }, 6000);
+        asyncCallback(chartHumidity, 'Humidity', Humidity);
+    }, 4000);
 
 
     socket.on('commandReply', function(result) {
@@ -31,10 +31,9 @@ $(function() {
 		if($.isNumeric(array[1])){
 			Temperature=array[1];
 		}
-        
     });
 
-    setInterval(function(){ sendMsgCommand("get_env_status"); }, 5000);
+    setInterval(function(){ sendMsgCommand("get_env_status"); }, 3000);
 
 
 

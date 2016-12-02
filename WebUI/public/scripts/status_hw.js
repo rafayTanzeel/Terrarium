@@ -33,13 +33,13 @@ $(function() {
 	
         if(parseInt(cooler)==1) {
             $("#coolerStat").attr('checked', 'checked');
-        }else if(parseInt(fogger)==0){
+        }else if(parseInt(cooler)==0){
             $("#coolerStat").removeAttr('checked');
         }
 
 
     });
 
-    setInterval(function(){ sendMsgCommand("get_hw_status"); }, 5000);
+    setInterval(function(){ sendMsgCommand("get_hw_status"); }, 3000);
 
 });
