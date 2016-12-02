@@ -5,7 +5,7 @@ $(function() {
         var r=hex.r;
         var g=hex.g;
         var b=hex.b;
-        //alert(r);
+
         $("#Rcolor").val(r).css('background-color',"rgb("+r+",0,0)");
         $("#Gcolor").val(g).css('background-color',"rgb(0,"+g+",0)");
         $("#Bcolor").val(b).css('background-color',"rgb(0,0,"+b+")");

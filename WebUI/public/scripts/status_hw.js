@@ -40,6 +40,6 @@ $(function() {
 
     });
 
-    setInterval(function(){ sendMsgCommand("get_hw_status"); }, 5000);
+    setInterval(function(){ sendMsgCommand("get_hw_status"); }, 3000);
 
 });
