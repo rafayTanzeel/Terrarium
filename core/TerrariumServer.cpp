@@ -258,6 +258,10 @@ void TerrariumServer::returnPacket(char* message)
 	}
 }
 
+
+/*
+ * This method is from http://code.runnable.com/VHb0hWMZp-ws1gAr/splitting-a-string-into-a-vector-for-c
+ */
 vector<string> TerrariumServer::split(string str, char delimiter) {
 	vector<string> result;
 	stringstream ss(str);
