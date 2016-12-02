@@ -4,47 +4,14 @@ $(function () {
         //Init Main Page
         init();
 
-        //$(".nav>li>ul>li a, .navbar-brand").click(function () {
-        //
-        //    //var navItem = $(this).attr('alt');
-        //    //if (navItem != "home") {
-        //    //    navItem = navItem.split('_')[0] + '/' + navItem;
-        //    //}
-        //    //
-        //    //$("article").fadeOut("fast", function () {
-        //    //    $.get(navItem + ".html", function (data) {
-        //    //        $("article").replaceWith(data);
-        //    //    });
-        //    //    $('article').fadeIn("fast");
-        //    //});
-        //    //
-        //    //displayNav();
-        //});
-
         $(window).resize(function () {
             displayNav();
         });
-
-
-	//socket.on('commandReply', function(result) {
-
-	//var array = $('#searchKeywords').val().split(",");
-   //     console.log(result);
-  //  });
-
-
     }
 );
 
 
 function init() {
-    //$(function(){
-    //    $('article').load( 'home.html' );
-    //});
-    //$.get("home.html", function (data) {
-    //    alert($(this));
-    //    $("article").replaceWith(data)
-    //});
     displayNav();
 }
 
