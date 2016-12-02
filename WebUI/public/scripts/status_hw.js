@@ -33,7 +33,7 @@ $(function() {
 	
         if(parseInt(cooler)==1) {
             $("#coolerStat").attr('checked', 'checked');
-        }else if(parseInt(fogger)==0){
+        }else if(parseInt(cooler)==0){
             $("#coolerStat").removeAttr('checked');
         }
 
