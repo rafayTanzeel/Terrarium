@@ -15,12 +15,12 @@ JOINED_LIB = lib.a
 
 all: app
 
-app: $(OBJS)
+app: $(OBJS) server
 	$(MAKE) -C tools
 	$(MAKE) -C libraries
 	$(MAKE) -C modules
 	$(MAKE) -C controllers
-	ar crsT lib.a $(STATIC_LIBS)
+	ar crsT $(JOINED_LIB) $(STATIC_LIBS)
 	$(CC_C)$(CXX) $(CXX_FLAGS) -o $(TARGET) $(OBJS) $(JOINED_LIB) $(LINKER)
 	cp $(TARGET) $(PUBDIR)/$(TARGET)
 
@@ -29,6 +29,10 @@ Terrarium.o: Terrarium.cpp TerrariumServer.o
 
 TerrariumServer.o: TerrariumServer.cpp
 	$(CC_C)$(CXX) $(CXX_FLAGS) -c TerrariumServer.cpp
+
+server:
+	mkdir -p $(PUBDIR)/terrarium-server-copy
+	cp -R ../WebUI/* $(PUBDIR)/terrarium-server-copy
 
 clean: 
 	rm -f *o $(PUBDIR)/$(TARGET)

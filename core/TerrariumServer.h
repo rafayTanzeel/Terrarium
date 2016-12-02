@@ -9,6 +9,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <string.h>
+#include <string>
 
 #define MSG_MAX_LEN 1024
 #define PORT 1337
@@ -24,7 +25,7 @@ static void returnPacket(char* message);
 private:
 
 static bool stopping;
-static TerrariumController _terrariumController;
+static TerrariumController* _terrariumController;
 
 };
 

@@ -18,13 +18,17 @@ int main() {
 	// Run our program!
 	printf("Beginning of Terrarium program..\n");
 
-	/*// Setup thread attributes
+	TerrariumController terrariumController = buildTerrariumController();
+	
+	terrariumController.run();
+
+	// Setup thread attributes
 	pthread_attr_t attr;
 	pthread_t* tid = (pthread_t*)malloc(sizeof(*tid)*NUM_THREADS);
 	pthread_attr_init(&attr);
 
 	// Create threads
-	pthread_create(&tid[0], &attr, TerrariumServer::listener, NULL); 	// Server Thread
+	pthread_create(&tid[0], &attr, TerrariumServer::listener, (void*)&terrariumController); 	// Server Thread
 
 	// Wait for threads to finish
 	for(int i = 0; i < NUM_THREADS; i++) {
@@ -32,11 +36,7 @@ int main() {
 	}
 
 	free(tid);
-	*/
-
-	TerrariumController terrariumController = buildTerrariumController();
 	
-	terrariumController.run();
 	
 	printf("Stopping Terrarium program..\n");
 }
