@@ -51,6 +51,7 @@ bool Fan::setSpeedRPM(int RPM)
     }
     int period = _pwm.getPeriod();
     int dutyCycle = RPM / _maxRPM;
+    _speedPercent = dutyCycle * 100;
     dutyCycle = period * dutyCycle;
     _pwm.setDutyCycle(dutyCycle);
     
@@ -72,6 +73,8 @@ bool Fan::setSpeedPercent(int percent)
     {
         percent = 0;
     }
+    
+    _speedPercent = percent;
     int period = _pwm.getPeriod();
     int dutyCycle = period * percent/100;
     _pwm.setDutyCycle(dutyCycle);

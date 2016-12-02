@@ -17,7 +17,7 @@ TempHumiditySensor::~TempHumiditySensor()
 double TempHumiditySensor::getHumidity() 
 {
     runHeater(200);
-    sleep(1);
+    usleep(500000);
 	return _sht31.readHumidity();
 }
 

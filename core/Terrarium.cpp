@@ -45,9 +45,9 @@ int main() {
 
 TerrariumController buildTerrariumController()
 {
-    Fan* exhaustFan = new Fan(50, 4200);
-    Fan* intakeFan = new Fan(51, 4200);
-    Fan* circulationFan = new Fan(3, 1400);
+    Fan* exhaustFan = new Fan(22, 4200);
+    Fan* intakeFan = new Fan(23, 4200);
+    Fan* circulationFan = new Fan(51, 1400);
     
     Relay* fogger = new Relay(115, false);
     Relay* cooler = new Relay(117, false);
@@ -60,7 +60,7 @@ TerrariumController buildTerrariumController()
 	ColorSensor* colorSensor = new ColorSensor(I2C_BUS_1, TCS34725_ADDRESS);
 	LightSensor* lightSensor = new LightSensor(I2C_BUS_2, TSL2591_ADDR);
 	RGBLightStrip* rgbLightStrip = new RGBLightStrip();
-	PWMLightStrip* pwmLightStrip = new PWMLightStrip(2);
+	PWMLightStrip* pwmLightStrip = new PWMLightStrip(50);
 	
 	LightController* lightController = new LightController(colorSensor, lightSensor, rgbLightStrip, pwmLightStrip);
 

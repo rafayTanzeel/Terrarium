@@ -4,7 +4,7 @@
 static int period = 100000; //nanoseconds
 
 PWMLightStrip::PWMLightStrip(int pinNumber) : _pwm(pinNumber),
-                                              _brightness(0),
+                                              _brightness(100),
                                               _on(false)
 {
     _pwm.setPeriod(period);
@@ -34,7 +34,9 @@ bool PWMLightStrip::setState(bool on)
 			
 int PWMLightStrip::getBrightness()
 {
-    return _pwm.getDutyCycle();
+    int brightness = _pwm.getDutyCycle() / _pwm.getPeriod() * 100;
+    
+    return brightness;
 }
 
 bool PWMLightStrip::setBrightness(int percent)
@@ -45,9 +47,15 @@ bool PWMLightStrip::setBrightness(int percent)
     else if (percent < 0) {
         percent = 0;
     }
+    
+    _brightness = percent;
     int period = _pwm.getPeriod();
-    int dutyCycle = period * percent;
+    int dutyCycle = period * percent/100;
     _pwm.setDutyCycle(dutyCycle);
+    
+    if (percent > 0) {
+        setState(true);
+    }
     return true;
 }
 

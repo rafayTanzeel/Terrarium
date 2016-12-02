@@ -172,6 +172,8 @@ int PWM::loadCape(const char* capeName)
 	fclose(pfile);
 	_capeLoaded = true;
 	}
+	
+	sleep(4);
 	return 0;
 }
 
