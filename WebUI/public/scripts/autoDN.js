@@ -1,16 +1,16 @@
 $(function() {
 
-    posBtn("#dayBrightLuxPosbtn", "#dayBrightLux");
-    negBtn("#dayBrightLuxNegbtn", "#dayBrightLux");
+    posBtn("#dayBrightLuxPosbtn", "#dayBrightLux", "#AnalogWithDBL");
+    negBtn("#dayBrightLuxNegbtn", "#dayBrightLux", "#AnalogWithDBL");
 
-    posBtn("#nightBrightLuxPosbtn", "#nightBrightLux");
-    negBtn("#nightBrightLuxNegbtn", "#nightBrightLux");
+    posBtn("#nightBrightLuxPosbtn", "#nightBrightLux", "#AnalogWithNBL");
+    negBtn("#nightBrightLuxNegbtn", "#nightBrightLux", "#AnalogWithNBL");
 
-    posBtn("#dayBrightFCPosbtn", "#dayBrightFC");
-    negBtn("#dayBrightFCNegbtn", "#dayBrightFC");
+    posBtn("#dayBrightFCPosbtn", "#dayBrightFC", "#AnalogWithDBFC");
+    negBtn("#dayBrightFCNegbtn", "#dayBrightFC", "#AnalogWithDBFC");
 
-    posBtn("#nightBrightFCPosbtn", "#nightBrightFC");
-    negBtn("#nightBrightFCNegbtn", "#nightBrightFC");
+    posBtn("#nightBrightFCPosbtn", "#nightBrightFC", "#AnalogWithNBFC");
+    negBtn("#nightBrightFCNegbtn", "#nightBrightFC", "#AnalogWithNBFC");
 
 
     posBtn("#DayHumidPosbtn", "#DayhumidIn");
@@ -19,11 +19,11 @@ $(function() {
     posBtn("#NightHumidPosbtn", "#NighthumidIn");
     negBtn("#NightHumidNegbtn", "#NighthumidIn");
 
-    posBtn("#dayColorTempPosbtn", "#dayColorTemp");
-    negBtn("#dayColorTempNegbtn", "#dayColorTemp");
+    posBtn("#dayColorTempPosbtn", "#dayColorTemp", "#AnalogWithDCT");
+    negBtn("#dayColorTempNegbtn", "#dayColorTemp", "#AnalogWithDCT");
 
-    posBtn("#nightColorTempPosbtn", "#nightColorTemp");
-    negBtn("#nightColorTempNegbtn", "#nightColorTemp");
+    posBtn("#nightColorTempPosbtn", "#nightColorTemp", "#AnalogWithNCT");
+    negBtn("#nightColorTempNegbtn", "#nightColorTemp", "#AnalogWithNCT");
 
 
     posBtn("#dayTempPosbtn", "#dayTemp");
@@ -32,13 +32,13 @@ $(function() {
     posBtn("#nightTempPosbtn", "#nightTemp");
     negBtn("#nightTempNegbtn", "#nightTemp");
 
-    analogToggleCheck("#AnalogWithDBL");
-    analogToggleCheck("#AnalogWithNBL");
-    analogToggleCheck("#AnalogWithDBFC");
-    analogToggleCheck("#AnalogWithNBFC");
+    analogToggleCheck("#AnalogWithDBL", "#dayBrightLux");
+    analogToggleCheck("#AnalogWithNBL", "#nightBrightLux");
+    analogToggleCheck("#AnalogWithDBFC", "#dayBrightFC");
+    analogToggleCheck("#AnalogWithNBFC", "#nightBrightFC");
 
-    analogToggleCheck("#AnalogWithDCT");
-    analogToggleCheck("#AnalogWithNCT");
+    analogToggleCheck("#AnalogWithDCT", "#dayColorTemp");
+    analogToggleCheck("#AnalogWithNCT", "#nightColorTemp");
 
 
     $('.timepicker').wickedpicker();

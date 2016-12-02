@@ -42,42 +42,64 @@ function displayNav() {
 }
 
 
-function negBtn(idBtn, inputField){
+function negBtn(idBtn, inputField, joinId){
     $(idBtn).on("click", function(){
         var btnVal=$(inputField).val();
         $(inputField).val(parseInt(btnVal)-5);
-	var res=inputField.substring(1, inputField.length)
-        sendMsgCommand(res+' '+$(inputField).val());
+        var res=inputField.substring(1, inputField.length);
+        var joiningIds='';
+        if ($(joinId).length)
+        {
+            if ($(joinId).is(':checked')) {
+                joiningIds=',1';
+            }
+            else {
+                joiningIds=',0';
+            }
+        }
+        sendMsgCommand(res+' '+$(inputField).val()+joiningIds);
     });
 }
 
 
-function posBtn(idBtn, inputField){
+function posBtn(idBtn, inputField, joinId){
     $(idBtn).on("click", function(){
         var btnVal=$(inputField).val();
         $(inputField).val(parseInt(btnVal)+5);
-	var res=inputField.substring(1, inputField.length)
-        sendMsgCommand(res+' '+$(inputField).val());
-        
+        var res=inputField.substring(1, inputField.length);
+        var joiningIds='';
+        if ($(joinId).length)
+        {
+            if ($(joinId).is(':checked')) {
+                joiningIds=',1';
+            }
+            else {
+                joiningIds=',0';
+            }
+        }
+        sendMsgCommand(res+' '+$(inputField).val()+joiningIds);
+
     });
 }
 
 
-function analogToggleCheck(inputField) {
+function analogToggleCheck(inputField, joinId) {
     $(inputField).on("click", function () {
-            var res = inputField.substring(1, inputField.length)
-            if ($(inputField).is(':checked')) {
-                sendMsgCommand(res + ' checked');
-            }
-            else {
-                sendMsgCommand(res + ' unchecked');
-            }
+        var res=joinId.substring(1, joinId.length);
+        var joiningIds=' '+$(joinId).val()+',';
+
+        if ($(inputField).is(':checked')) {
+            sendMsgCommand(res + joiningIds+'1');
+        }
+        else {
+            sendMsgCommand(res + joiningIds+'0');
+        }
         }
     );
 }
 
 function rgbDataSend(r,g,b){
-	socket.emit('msg', "rgb "+r+','+g+','+b);
+    socket.emit('msg', "rgb "+r+','+g+','+b);
 }
 
 
