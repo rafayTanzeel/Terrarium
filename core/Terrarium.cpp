@@ -20,8 +20,6 @@ int main() {
 
 	TerrariumController terrariumController = buildTerrariumController();
 	
-	terrariumController.run();
-
 	// Setup thread attributes
 	pthread_attr_t attr;
 	pthread_t* tid = (pthread_t*)malloc(sizeof(*tid)*NUM_THREADS);
@@ -29,6 +27,9 @@ int main() {
 
 	// Create threads
 	pthread_create(&tid[0], &attr, TerrariumServer::listener, (void*)&terrariumController); 	// Server Thread
+
+	// Run Terrarium controller
+//	terrariumController.run();
 
 	// Wait for threads to finish
 	for(int i = 0; i < NUM_THREADS; i++) {
