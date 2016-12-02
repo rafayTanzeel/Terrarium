@@ -1,6 +1,6 @@
 $(function() {
 
-    $("#colorpicker").on("mousemove", function() {
+    $(".marker").on("mousemove", function() {
         var hex=hexToRgb($("#color").val());
         var r=hex.r;
         var g=hex.g;
@@ -18,11 +18,11 @@ $(function() {
         negBtn("#brightneg", "#manualbright");
 
 
-	analogToggleCheck("#intakeFan");
-        analogToggleCheck("#exhaustFan");
-        analogToggleCheck("#circulationFan");
-        analogToggleCheck("#fogger");
-        analogToggleCheck("#cooler");
+	analogToggleSingleCheck("#intakeFan");
+    analogToggleSingleCheck("#exhaustFan");
+    analogToggleSingleCheck("#circulationFan");
+    analogToggleSingleCheck("#fogger");
+    analogToggleSingleCheck("#cooler");
 
 
 }

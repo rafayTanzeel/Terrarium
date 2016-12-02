@@ -98,6 +98,19 @@ function analogToggleCheck(inputField, joinId) {
     );
 }
 
+function analogToggleSingleCheck(inputField) {
+    $(inputField).on("click", function () {
+            var res = inputField.substring(1, inputField.length)
+            if ($(inputField).is(':checked')) {
+                sendMsgCommand(res + ' 1');
+            }
+            else {
+                sendMsgCommand(res + ' 0');
+            }
+        }
+    );
+}
+
 function rgbDataSend(r,g,b){
     socket.emit('msg', "rgb "+r+','+g+','+b);
 }
