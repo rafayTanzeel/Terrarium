@@ -200,6 +200,9 @@
 
     $(".btn").on("click", function () {
         if($("#nHr").val()!=nHr || $("#nMin").val()!=nMin || $("#nSec").val()!=nSec){
+			nHr=$("#nHr").val();
+			nMin=$("#nMin").val();
+			nSec=$("#nSec").val();
             var result=$("#nHr").val() + ":" + $("#nMin").val() + ":" + $("#nSec").val();
             sendMsgCommand("NightTime: "+result);
         }else{
