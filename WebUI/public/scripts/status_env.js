@@ -25,8 +25,13 @@ $(function() {
 
     socket.on('commandReply', function(result) {
         var array = result.split(',');
-        Humidity=array[0];
-        Temperature=array[1];
+		if($.isNumeric(array[0])){
+			Humidity=array[0];
+		}
+		if($.isNumeric(array[1])){
+			Temperature=array[1];
+		}
+        
     });
 
     setInterval(function(){ sendMsgCommand("get_env_status"); }, 5000);
