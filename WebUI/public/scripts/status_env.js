@@ -16,10 +16,10 @@ $(function() {
     };
 
     setInterval(function () {
-        asyncCallback(chartTemp, 'Temperature', Humidity);
+        asyncCallback(chartTemp, 'Temperature', Temperature);
     }, 6000);
     setInterval(function () {
-        asyncCallback(chartHumidity, 'Humidity', Temperature);
+        asyncCallback(chartHumidity, 'Humidity', Humidity);
     }, 6000);
 
 
