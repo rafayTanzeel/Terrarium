@@ -32,7 +32,7 @@ $(function() {
 
     });
 
-    setInterval(function(){ sendMsgCommand("get_light_status"); }, 5000);
+    setInterval(function(){ sendMsgCommand("get_light_status"); }, 15000);
 
 });
 
