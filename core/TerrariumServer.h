@@ -8,11 +8,15 @@
 #include <stdbool.h>
 #include <netdb.h>
 #include <unistd.h>
-#include <string.h>
+#include <cstring>
 #include <string>
+#include <vector>
+#include <sstream>
 
 #define MSG_MAX_LEN 1024
 #define PORT 1337
+
+using namespace std;
 
 class TerrariumServer
 {
@@ -26,6 +30,8 @@ private:
 
 static bool stopping;
 static TerrariumController* _terrariumController;
+
+static vector<string> split(string str, char delimiter);
 
 };
 
