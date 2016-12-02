@@ -17,10 +17,10 @@ $(function() {
 
     setInterval(function () {
         asyncCallback(chartTemp, 'Temperature', Humidity);
-    }, 10000);
+    }, 6000);
     setInterval(function () {
         asyncCallback(chartHumidity, 'Humidity', Temperature);
-    }, 10000);
+    }, 6000);
 
 
     socket.on('commandReply', function(result) {
@@ -29,7 +29,7 @@ $(function() {
         Temperature=array[1];
     });
 
-    setInterval(function(){ sendMsgCommand("get_env_status"); }, 10000);
+    setInterval(function(){ sendMsgCommand("get_env_status"); }, 5000);
 
 
 
